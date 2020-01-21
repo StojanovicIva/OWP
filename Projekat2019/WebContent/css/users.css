@@ -1,0 +1,114 @@
+body {
+	background-image: url("background2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+ul {
+	list-style-type: none;
+	margin-left:0cm;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #333;
+	position: sticky;
+	top: 0;
+}
+
+li {
+	float: left;
+}
+
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 20px 20px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #804040;
+	
+}
+
+.active {
+	background-color: #804040;
+}
+
+h1{
+	font-size: 50pt;
+	font-style: italic;
+	color: yellow;
+	text-align: center;
+}
+
+table, th, td {
+  border: 2px solid black;
+  color: yellow;
+}
+
+.container{
+	margin-left:3cm;
+	margin-top: 3cm;
+	border:black;
+}
+
+td{
+	background-color: black;
+	color: yellow;
+	text-decoration: inherit;
+	font-size: 20px;
+}
+
+table{
+	margin: 0 auto;
+	
+}
+
+table a{
+	color: yellow;
+}
+
+table a:hover {
+	background-color: #ffff80;
+	
+}
+
+#findUserInput{
+	border: 2px solid yellow;
+	border-radius: 4px;
+	height: 30px;
+	font-size: 15px;
+	margin-bottom: 30px;
+	margin-left:150px;
+}
+
+input:focus{
+	border: 3px solid #555;
+}
+
+#search{
+	border: 2px solid yellow;
+	border-radius: 4px;
+	height: 30px;
+	font-size: 15px;
+	margin-left: 5px;
+}
+
+/* .loader { */
+/*   border: 16px solid yellow; */
+/*   border-radius: 50%; */
+/*   border-top: 16px solid black; */
+/*   width: 20px; */
+/*   height: 20px; */
+/*   -webkit-animation: spin 2s linear infinite; Safari */
+/*   animation: spin 2s linear infinite; */
+/* } */
+
+/* @keyframes spin { */
+/*   0% { transform: rotate(0deg); } */
+/*   100% { transform: rotate(360deg); } */
+/* } */
+

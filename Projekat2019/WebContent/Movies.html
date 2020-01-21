@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Movies</title>
+		
+		<!-- jQuery -->
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/movies.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="css/movies.css">	
+		
+	</head>
+	<body>
+		<ul>
+			<li><a class = "active" href="index.html">Home</a></li>
+			<li><a id= "searchMovies">Search movies</a></li>
+		</ul>
+		
+		<!-- MODAL FOR SEARCH -->
+		<div class="bg-modal">
+			<div class ="modal-content">
+				
+				<div class="close">+</div>
+
+					<p>Here you can 'filter' movies by name, style, distributor or country</p>
+					
+					Choose what you want to search by: <br>
+					<select id="criterium" name ="criterium">
+						<option  value="name">Search by name</option>
+						<option  value="style">Search by style</option>
+						<option  value="distributor">Search by distributor</option>
+						<option  value="country">Search by country</option>
+					</select>
+					
+					<input type="text" placeholder="Type and search here.." name="searchInput" id="searchInput">									
+					
+					<button type="submit" id="search" >Search </button>
+			</div>
+		</div>	
+		
+		<h1>MOVIES</h1>
+		<h2>If you click on one movie, You can see all the details!</h2>
+			
+		<table id = "table">
+			<tr>
+				<th>Name</th>
+				<th>Style</th>
+				<th>Duration</th>
+				<th>Distributor</th>
+				<th>Country</th>
+				<th>Year</th>
+			</tr>
+		</table>
+		
+
+	</body>
+</html>

@@ -1,0 +1,102 @@
+body {
+	background-image: url("background2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+ul {
+	list-style-type: none;
+	margin-left:0cm;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #333;
+	position: sticky;
+	top: 0;
+}
+
+li {
+	float: left;
+}
+
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 20px 20px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #804040;
+	
+}
+
+h2{
+	color: yellow;
+	font-size: 45px;
+	margin-left:35%;
+}
+
+label{
+	color:yellow;
+	size: 15px;
+	margin-left: 30%;
+	margin-top:10%;
+}
+
+div{
+	display: inline-block;
+	
+	color:yellow;
+	font-size: 25px;
+}
+input{
+	border: 2px solid yellow;
+	border-radius: 4px;
+	height: 40px;
+	font-size: 20px;
+	width: auto;
+}
+
+input:focus{
+	border: 3px solid #555;
+}
+
+.oneSide{
+	margin-left: 250px;
+	
+}
+.secondSide{
+	display: inline-block;
+	vertical-align: top;
+    margin-left:10%;
+    border-radius: 50%;
+}
+
+#description{
+	text-align: center;
+	font-size: 20px;
+}
+.description{
+	margin-left: 250px;
+	margin-top: 50px;
+	
+}
+
+#distributor{
+	width: 300px;
+}
+#country{
+	width: 400px;
+}
+
+#actors{
+		display: inline-block;
+	
+	border: 2px solid yellow;
+	border-radius: 4px;
+	height: 40px;
+	font-size: 20px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>User</title>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/user.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/user.css">
+		
+	</head>
+	<body>
+		<header>
+			<!-- NAVBAR -->
+			<ul>
+				<li><a class = "active" href="index.html">Home</a></li>
+
+			</ul>
+		</header>
+		
+		<main>
+		
+			<h2>Selected user:</h2>
+			
+			<div class="container">
+							
+				<div class = "form">
+					
+					Username:<br> 
+					<input name="username" id ="username" disabled ="disabled"><br>
+					
+					Password:<br>
+					<input name="password" id="password" type="password"><br>
+					
+					Repeated password:<br>
+					<input name="repeatedPassword" id="repeatedPassword" type="password"><br>
+		
+					Registration date: <br>			
+					<input name="registrationDate" id="registrationDate" disabled="disabled"><br>
+					
+					Role: <br>
+					<select id="role" name ="role" disabled="disabled">
+						<option  value="ADMINISTRATOR">ADMINISTRATOR</option>
+						<option  value="USER">USER</option>
+					</select>
+				</div>
+			
+				<img src="css/avatar.png" alt="Avavtar" class="avatar">
+			
+			</div>
+		</main>
+	</body>
+	</html>

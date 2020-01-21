@@ -1,0 +1,73 @@
+body {
+	background-image: url("background2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+ul {
+	list-style-type: none;
+	margin-left:0cm;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #333;
+	position: sticky;
+	top: 0;
+}
+
+li {
+	float: left;
+}
+
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 20px 20px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #804040;
+	
+}
+.active {
+	background-color: #804040;
+}
+
+h2{
+	color: yellow;
+	font-size:50px;
+	text-align: center;
+}
+
+div{
+	color:yellow;
+	font-size: 25px;
+}
+
+input{
+	border: 2px solid yellow;
+	border-radius: 4px;
+	height: 40px;
+	font-size: 20px;
+}
+
+input:focus{
+	border: 3px solid #555;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left:10%;
+}
+
+.form{
+	display: inline-block;
+	margin-left: 25%;
+}

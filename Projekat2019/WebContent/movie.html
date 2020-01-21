@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Movie</title>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/movie.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/movie.css">
+		
+	</head>
+	<body>
+		<!-- NAVBAR -->
+		<ul>
+			<li><a class = "active" href="./index.html">Home</a></li>			
+			<li><a href = "Movies.html">Movies</a></li>
+		</ul>
+		
+		<h2>Selected movie:</h2>
+		
+		<div class= "container">
+			<div class="form">
+				<div class ="oneSide">
+					Name: <br>
+					<input name="name" id="name" disabled="disabled"><br>
+					
+					Style: <br>
+					<input name="style" id="style" disabled ="disabled"><br>
+				
+					Duration: <br>
+					<input name="duration" id="duration" disabled ="disabled"><br>
+					
+					Year: <br>
+					<input name="year" id="year" disabled ="disabled"><br>
+					
+					Distributor: <br>
+					<input name="distributor" id="distributor" disabled ="disabled"><br>
+					
+					Country: <br>
+					<input name="country" id="country" disabled ="disabled"><br>
+					
+				</div>
+				
+				<div class= "secondSide">
+					Director: <br>
+					<input name="director" id="director" disabled ="disabled"><br>
+					
+					Actors: <br>
+					<textarea  id="actors" disabled ="disabled"></textarea><br>
+				
+				</div>
+				
+				<div class="description">
+					Description: <br>
+					<textarea  rows="6" cols="80" name="description" id="description" disabled ="disabled">
+				</div>
+				
+			</div>
+		</div>
+		
+	</body>
+</html>
