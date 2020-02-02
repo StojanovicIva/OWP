@@ -18,12 +18,42 @@
 		<ul>
 			<li><a class = "active" href="index.html">Home</a></li>
 			<li><a href = "#" id="myProfile">MyProfile</a></li>
+			<li><a id = "sortUsers">Sort users</a>
+			
 		</ul>
 		
 		<h1> All users </h1>
 		
 		
+		<!-- MODAL FOR SORT -->
+		<div class="bgg-modal">
+			<div class ="modal-content">
+				
+				<div class="closeSort">+</div>
+
+					<p>Sort by one of the following criteria</p>
+					
+					<select id="criteria" name ="criteria" >
+						<option  value="name">Sort by name</option>
+						<option  value="role">Sort by role</option>
+					</select><br>
+					
+					<p>Sort by ascending or descending criteria</p>
+					<select id="ascOrDesc" name="ascOrDesc">
+						<option value="ASC">Ascending</option>
+						<option value="DESC">Descending</option>
+					</select><br>
+					
+					<button type="submit" id="sort">Sort </button>
+				</div>
+		</div>		
+		
+		
 		<input type="text" id="findUserInput" name = "findUserInput" placeholder = "Search by username.."><button type="submit" id="search">✔</button>
+		<select id="roleSelect">
+			<option value = "ADMINISTRATOR"> ADMINISTRATOR</option>
+			<option value = "USER"> USER</option>
+		</select>
 
 		<table id = "table" style="width:80%">
 			

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class Ticket {
 
 	public int id;
-	public ProjectType type;
+	public Projection projection;
 	public Seat seat;
 	public Timestamp dateAndTime;
 	public User user;
@@ -13,11 +13,17 @@ public class Ticket {
 	public Ticket() {
 	};
 
-	public Ticket(int id, ProjectType type, Seat seat, Timestamp dateAndTime, User user) {
+	public Ticket(int id, Projection projection, Seat seat, Timestamp dateAndTime, User user) {
 		this.id = id;
-		this.type = type;
+		this.projection = projection;
 		this.seat = seat;
 		this.dateAndTime = dateAndTime;
+		this.user = user;
+	}
+	
+	public Ticket (Projection projection, Seat seat, User user) {
+		this.projection = projection;
+		this.seat = seat;
 		this.user = user;
 	}
 
@@ -29,12 +35,12 @@ public class Ticket {
 		this.id = id;
 	}
 
-	public ProjectType getType() {
-		return type;
+	public Projection getProjection() {
+		return projection;
 	}
 
-	public void setType(ProjectType type) {
-		this.type = type;
+	public void setProjection(Projection projection) {
+		this.projection = projection;
 	}
 
 	public Seat getSeat() {

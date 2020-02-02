@@ -13,13 +13,14 @@ public class Movie {
 	private int duration;
 	private String distributor;
 	private String country;
-	private String year;
+	private int year;
 	private String description;
+	private int deleted;
 	
 	public Movie() {};
 	
 	public Movie(int id, String name, String director, String actors, String style, int duration, String distributor,
-				 String country, String year, String description) {
+				 String country, int year, String description, int deleted) {
 		this.id = id;
 		this.name = name;
 		this.director = director;
@@ -30,7 +31,23 @@ public class Movie {
 		this.country = country;
 		this.year = year;
 		this.description = description;
+		this.deleted = deleted;
 	}
+	
+	public Movie( String name, String director, String actors, String style, int duration, String distributor,
+			 String country, int year, String description, int deleted) {
+		this.name = name;
+		this.director = director;
+		this.actors = actors;
+		this.style = style;
+		this.duration = duration;
+		this.distributor = distributor;
+		this.country = country;
+		this.year = year;
+		this.description = description;
+		this.deleted = deleted;
+}
+
 
 	public int getId() {
 		return id;
@@ -96,11 +113,11 @@ public class Movie {
 		this.country = country;
 	}
 
-	public String getYear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setYear(int year) {
 		this.year = year;
 	}
 
@@ -110,6 +127,14 @@ public class Movie {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(int deleted) {
+		this.deleted = deleted;
 	}
 
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/addProjection.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/projection.css">
+		
+		
+		<title>Add Projection</title>
+	</head>
+	<body>
+		
+		<!-- NAVBAR -->
+		<ul>
+			<li><a class = "active" href="#">Home</a></li>
+			<li><a href = "Movies.html">Movies</a></li>
+		</ul>
+		
+		<h2>Add new projection:</h2>
+		
+		<div class="container">
+		
+			<div class = "form">
+				Movie:<br>
+				<select id="movieName">
+				</select><br>
+				
+				Date and time:<br>
+				<input name="dateAndTime" id="dateAndTime"  type="datetime-local"><br>
+				
+				Projection type:<br>
+				<select id="projectionType">
+				</select><br>
+				
+				Hall: <br>
+				<select id="hall">
+				</select><br>
+				
+				Price: <br>
+				<input name="price" id="price" ><br>
+				
+				<button type = "submit" id="addProjectionButton"> ADD PROJECTION </button>
+			</div>
+		</div>
+		
+	</body>
+</html>

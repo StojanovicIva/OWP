@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Movie</title>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<script type="text/javascript" src="js/AddMovie.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/addMovie.css">
+		
+	</head>
+	<body>
+		<!-- NAVBAR -->
+		<ul>
+			<li><a class = "active" href="./index.html">Home</a></li>			
+			<li><a href = "Movies.html">Movies</a></li>
+		</ul>
+		
+		<h2>Create new  movie:</h2>
+		
+		<div class= "container">
+			<div class="form">
+				<form action="./AddMovieServlet" method="post" id="addMovie">
+			
+				<div class ="oneSide">
+					
+						Name: <br>
+						<input name="name" id="name" ><br>
+						
+						Style: <br>
+						<input name="style" id="style" ><br>
+					
+						Duration: <br>
+						<input name="duration" id="duration" ><br>
+						
+						Year: <br>
+						<input name="year" id="year" ><br>
+						
+						Distributor: <br>
+						<input name="distributor" id="distributor"><br>
+						
+						Country: <br>
+						<input name="country" id="country"><br>
+						
+					</div>
+					
+					<div class= "secondSide">
+						Director: <br>
+						<input name="director" id="director" ><br>
+						
+						Actors: <br>
+						<textarea  id="actors" name="actors" cols="20" rows = "10"></textarea><br>
+					
+					</div>
+				
+					<div class="description">
+						Description: <br>
+						<textarea cols='30' rows='8'  name="description" id="description"></textarea>
+					</div>
+					
+					<button type="submit" id="addMovie">Add movie!</button>
+					</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

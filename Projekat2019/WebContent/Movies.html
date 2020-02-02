@@ -14,28 +14,67 @@
 		
 	</head>
 	<body>
-		<ul>
+		<ul id="ul">
 			<li><a class = "active" href="index.html">Home</a></li>
 			<li><a id= "searchMovies">Search movies</a></li>
+			<li><a id = "sortMovies">Sort movies</a>
 		</ul>
+		
+		<!-- MODAL FOR SORT -->
+		<div class="bgg-modal">
+			<div class ="modal-content">
+				
+				<div class="closeSort">+</div>
+
+					<p>Sort by one of the following criteria</p>
+					
+					<select id="criteria" name ="criteria" >
+						<option  value="name">Sort by name</option>
+						<option  value="style">Sort by style</option>
+						<option  value="distributor">Sort by distributor</option>
+						<option  value="country">Sort by country</option>
+						<option  value="time">Sort by time</option>
+						<option  value="year">Sort by year</option>
+					</select><br>
+					
+					<p>Sort by ascending or descending criteria</p>
+					<select id="ascOrDesc" name="ascOrDesc">
+						<option value="ASC">Ascending</option>
+						<option value="DESC">Descending</option>
+					</select><br>
+					
+					<button type="submit" id="sort">Sort </button>
+				</div>
+		</div>		
+		
+		
 		
 		<!-- MODAL FOR SEARCH -->
 		<div class="bg-modal">
 			<div class ="modal-content">
 				
 				<div class="close">+</div>
-
-					<p>Here you can 'filter' movies by name, style, distributor or country</p>
 					
-					Choose what you want to search by: <br>
+					<p>Choose what you want to search by:</p> <br>
+					
 					<select id="criterium" name ="criterium">
 						<option  value="name">Search by name</option>
 						<option  value="style">Search by style</option>
 						<option  value="distributor">Search by distributor</option>
 						<option  value="country">Search by country</option>
-					</select>
+						<option  value="time">Search by range of time</option>
+						<option  value="date">Search by range of date</option>
+					</select><br>
 					
-					<input type="text" placeholder="Type and search here.." name="searchInput" id="searchInput">									
+					<br><input type="text" placeholder="Type and search here.." name="searchInput" id="searchInput"><br>									
+					
+					<div id = "rangeDiv">
+						From the: <br>
+						<input placeholder = "Type here.." name = "FromThe" id = "FromThe">
+						To: <br>
+						<input placeholder = "Type here.." name = "To" id = "To">
+					
+					</div>
 					
 					<button type="submit" id="search" >Search </button>
 			</div>

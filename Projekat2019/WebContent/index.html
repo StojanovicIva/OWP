@@ -70,10 +70,102 @@
  		  		document.getElementById("modal01").style.display = "block";
  			}
  		</script> 
+ 		
+ 		<!-- MODAL FOR SORT -->
+		<div class="bgg-modal">
+			<div class ="modal-content">
+				
+				<div class="closeSort">+</div>
+
+					<p>Sort by one of the following criteria</p>
+					
+					<select id="criteria" name ="criteria" >
+						<option  value="movie">Sort by movie name</option>
+						<option  value="time">Sort by time</option>
+						<option  value="type">Sort by projection type</option>
+						<option  value="hall">Sort by hall</option>
+						<option  value="price">Sort by price</option>
+					</select><br>
+					
+					<p>Sort by ascending or descending criteria</p>
+					<select id="ascOrDesc" name="ascOrDesc">
+						<option value="ASC">Ascending</option>
+						<option value="DESC">Descending</option>
+					</select><br>
+					
+					<button type="submit" id="sort">Sort </button>
+				</div>
+		</div>		
+		
+		
+		
+		<!-- MODAL FOR SEARCH -->
+		<div class="b-modal">
+			<div class ="modal-content">
+				
+				<div class="clos">+</div>
+					
+					<p>Choose what you want to search by:</p> <br>
+					
+					<select id="criterium" name ="criterium">
+						<option  value="movieName">Search by movie name</option>
+						<option  value="dateAndTime">Search by range of date and time</option>
+						<option  value="type">Search by type of projection</option>
+						<option  value="price">Search by range of price</option>
+						<option  value="hall">Search by hall</option>
+						<option  value="nameAndDate">Search by name AND date</option>
+						<option  value="nameAndPrice">Search by name AND price</option>
+						<option  value="dateAndPrice">Search by date AND price</option>
+					</select><br>
+					
+					<br><input type="text" placeholder="Type and search here.." name="searchInput" id="searchInput"><br>									
+					
+					<div id = "rangeDiv">
+						From the: <br>
+						<input placeholder = "Type here.." name = "FromThe" id = "FromThe">
+						To: <br>
+						<input placeholder = "Type here.." name = "To" id = "To">
+					
+					</div>
+					
+					<div id= "typeDiv">
+						<p>Choose what projection type you want:</p>
+						<select id="selectType">
+						
+						</select>
+					</div>
+					
+					<div id= "hallDiv">
+						<p>Choose what hall you want:</p>
+						<select id="selectHall">
+						
+						</select>
+					</div>
+					
+					<div id="timeDiv">
+						<p>Select Date and Time you want</p>
+						From the: <input id="fromTheDate" type="datetime-local">
+						To: <input id="toDate" type="datetime-local">
+					</div>
+					
+					<button type="submit" id="search" >Search </button>
+			</div>
+		</div>	
+				
 				
 		<!-- projections -->
 		<div class = "container">
 			
+		<!-- <button type="submit" id="searchProjectionsButton">Search</button> -->
+		
+		 <div class="dropdown">
+ 			 <button class="dropbtn">Click here to:</button>
+ 			 <div class="dropdown-content" id = "Drop">
+			    <a id= "searchProjection" href="#">Search</a>
+			    <a id = "sortProjection"  href="#">Sort</a>
+			  </div>
+		</div>
+						
 			<!-- table -->
 			<table id = "table" style="width:80%">
 				<tr>

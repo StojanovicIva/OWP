@@ -37,8 +37,20 @@ public class SearchUserServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String value = request.getParameter("value");
+		
+		UserDAO userDao = new UserDAO();
+		System.out.println("value: " + value);
+		
+		ArrayList<User> users = userDao.findUserByRole(value);
+		Map<String, Object> data = new LinkedHashMap<String, Object>();
+		
+		data.put("users", users);
+		
+		request.setAttribute("data", data);
+		System.out.println(data);
+		
+		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 	}
 
 }

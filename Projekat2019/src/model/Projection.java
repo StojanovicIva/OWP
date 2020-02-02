@@ -24,6 +24,14 @@ public class Projection {
 		this.price = price;
 		this.adminsName = adminsName;
 	}
+	public Projection( Movie movie, ProjectType type, Hall hall, Date dateAndTime, int price, User adminsName) {
+		this.movie = movie;
+		this.type = type;
+		this.hall = hall;
+		this.dateAndTime = dateAndTime;
+		this.price = price;
+		this.adminsName = adminsName;
+	}
 
 	public int getId() {
 		return id;

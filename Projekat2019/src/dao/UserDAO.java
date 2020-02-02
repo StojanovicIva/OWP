@@ -296,4 +296,134 @@ public class UserDAO {
 		}
 		return users;		
 	}
+
+//----------------------------------------------------------------------------------------------------------------------------
+
+	//for searching
+	public ArrayList<User> findUserByRole(String role){
+		ArrayList<User> users = new ArrayList<User>();
+		
+		Connection connection = ConnectionManager.getConnection();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			
+			String query = "SELECT id, username, password, registrationDate, role FROM users WHERE role = ? and deleted = false";
+			
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, role);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				int index = 1;
+				Integer id = rset.getInt(index++);
+				String username = rset.getString(index++);
+				String password = rset.getString(index++);
+				Timestamp registrationDate = rset.getTimestamp(index++);
+				Role rolee = Role.valueOf(rset.getString(index++));
+				
+				users.add( new User(id, username, password, registrationDate, rolee));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+			try {
+				rset.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+		}
+		return users;		
+	}
+	
+//----------------------------------------------------------------------------------------------------------------------------
+		public boolean delete (int id) {
+			Connection conn = ConnectionManager.getConnection();
+
+			PreparedStatement pstmt = null;
+			try {
+				String query = "DELETE FROM users WHERE id = ?";
+				
+				pstmt = conn.prepareStatement(query);
+				int index = 1;
+
+				pstmt.setInt(index++, id);
+				
+				return pstmt.executeUpdate() == 1;
+				
+			}catch(Exception ex) {
+				ex.printStackTrace();
+
+			}finally {
+				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+			}
+			return false;
+	}
+
+//----------------------------------------------------------------------------------------------------------------------------
+		public boolean updatePass (int id, String pass) {
+			Connection conn = ConnectionManager.getConnection();
+
+			PreparedStatement pstmt = null;
+			try {
+				String query = "UPDATE users SET password = ? WHERE id = ?";
+				
+				pstmt = conn.prepareStatement(query);
+				int index = 1;
+
+				pstmt.setString(index++, pass);
+				pstmt.setInt(index++, id);
+				
+				return pstmt.executeUpdate() == 1;
+				
+			}catch(Exception ex) {
+				ex.printStackTrace();
+
+			}finally {
+				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+			}
+			return false;
+	}
+//----------------------------------------------------------------------------------------------------------------------------
+		public boolean updateRole (int id, String role) {
+			Connection conn = ConnectionManager.getConnection();
+
+			PreparedStatement pstmt = null;
+			try {
+				String query = "UPDATE users SET role = ? WHERE id = ?";
+				
+				pstmt = conn.prepareStatement(query);
+				int index = 1;
+
+				pstmt.setString(index++, role);		
+				pstmt.setInt(index++, id);
+
+				
+				return pstmt.executeUpdate() == 1;
+				
+			}catch(Exception ex) {
+				ex.printStackTrace();
+
+			}finally {
+				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+			}
+			return false;
+	}
 	}

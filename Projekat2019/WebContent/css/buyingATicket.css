@@ -1,0 +1,120 @@
+body {
+	background-image: url("background2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+
+ul {
+	list-style-type: none;
+	margin-left:0cm;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #333;
+	position: sticky;
+	top: 0;
+}
+
+li {
+	float: left;
+}
+
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 20px 20px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #804040;
+	
+}
+.active {
+	background-color: #804040;
+}
+
+h2{
+	color: yellow;
+	font-size:50px;
+	text-align: center;
+}
+
+table, #secondTable{
+	margin: 0 auto;
+	color: yellow;
+	font-size: 20px;
+}
+
+table, th, td, #secondTable {
+  border: 2px solid black;
+  margin-bottom: 50px;
+  color: yellow
+}
+
+.container{
+	margin: 0 auto;
+	border:black;
+	width: 80%;
+	
+}
+
+td{
+	background-color: black;
+	color: yellow;
+	text-decoration: inherit;
+	font-size: 20px;
+}
+
+table a, #secondTable a{
+	color: yellow;
+}
+
+table a:hover, #secondTable a:hover {
+	background-color: #804040;
+	
+}
+
+ .secondStep, .container, .thirdStep{
+	border: 2px solid;
+	border-color: yellow;
+}
+
+.secondStep{
+	margin-left:10%;
+	width: 280px;
+	margin-bottom: 4%;	
+}
+
+.seatButton{
+	height:40px;
+	width: 50px;
+	border: 2px solid yellow;
+	border-radius: 4px;
+	font-size: 15px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+ .secondStep, .thirdStep{
+	display: none;
+}
+
+p{
+	font-size: 30px;
+	color: yellow;
+	margin-left:20px;
+}
+
+#secondTable{
+	margin: 0 auto;
+	width:80%;
+	margin-bottom: 5%;
+	font-size: 20px;
+}
+
+#next{
+	display:none;
+}

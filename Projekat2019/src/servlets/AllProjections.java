@@ -32,8 +32,26 @@ public class AllProjections extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		//All projections for movie
+		try {
+			
+			Integer movieId = Integer.parseInt(request.getParameter("id"));
+			
+			ProjectionDAO dao = new ProjectionDAO();
+			
+			ArrayList<Projection> projections = dao.findProjectionByMovieId(movieId);
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			data.put("projections", projections);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
+			
+	
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+			}
 
 }

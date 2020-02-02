@@ -27,60 +27,40 @@ public class SearchMovieServlet extends HttpServlet {
 
 		System.out.println("Stigne: " + criterium + "+" + input);
 		
+		ArrayList<Movie> movies = null;
+		
 		if(criterium.equals("name")) {
-			System.out.println("Upao u name criterium;");
-			ArrayList<Movie> movies = dao.findMovieByName(input);
-			
-			System.out.println(movies);
-			
-			data.put("movies", movies);
-			
-			request.setAttribute("data", data);
-			System.out.println(data);
-			
-			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-			return;
-			
+			movies = dao.findMovieByName(input);
+						
 		}
 		else if(criterium.equals("style")) {
-			ArrayList<Movie> movies = dao.findMovieByStyle(input);
+			movies = dao.findMovieByStyle(input);
 			
-			System.out.println(movies);
-			
-			data.put("movies", movies);
-			
-			request.setAttribute("data", data);
-			System.out.println(data);
-			
-			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-			return;
 		}
 		else if(criterium.equals("distributor")) {
-			ArrayList<Movie> movies = dao.findMovieByDistributor(input);
-			
-			System.out.println(movies);
-			
-			data.put("movies", movies);
-			
-			request.setAttribute("data", data);
-			System.out.println(data);
-			
-			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-			return;
+			movies = dao.findMovieByDistributor(input);
+
 		}
 		else if(criterium.equals("country")) {
-			ArrayList<Movie> movies = dao.findMovieByCountry(input);
+			movies = dao.findMovieByCountry(input);
+
+		}else if(criterium.contentEquals("time")) {
+			int fromThe = Integer.parseInt(request.getParameter("fromThe"));
+			int to = Integer.parseInt(request.getParameter("to"));
+			movies = dao.findMovieByRangeOfTime(fromThe, to);
 			
-			System.out.println(movies);
-			
-			data.put("movies", movies);
-			
-			request.setAttribute("data", data);
-			System.out.println(data);
-			
-			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-			return;
+		}else if(criterium.contentEquals("date")) {
+			int fromThe = Integer.parseInt(request.getParameter("fromThe"));
+			int to = Integer.parseInt(request.getParameter("to"));
+			movies = dao.findMovieByRangeOfDate(fromThe, to);
 		}
+		
+		data.put("movies", movies);
+		
+		request.setAttribute("data", data);
+		System.out.println(data);
+		
+		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 
 	}
 

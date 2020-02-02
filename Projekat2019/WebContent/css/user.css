@@ -71,3 +71,32 @@ input:focus{
 	display: inline-block;
 	margin-left: 25%;
 }
+
+table{
+	text-align: center;
+	color: yellow;
+	font-size: 20pt;
+	color:yellow;
+	margin:  auto;
+	
+}
+
+table, th, td {
+  border: 2px solid black;
+}
+
+td{
+	background-color: black;
+	color: yellow;
+	text-decoration: inherit;
+	font-size: 20px;
+}
+
+table a{
+	color: yellow;
+}
+
+table a:hover {
+	background-color: orange;
+	
+}
