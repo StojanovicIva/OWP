@@ -18,14 +18,16 @@ $.get("./LoginServlet", function(data){
 					table.append("<tr>" + 
 								 "<td><a href ='movie.html?id=" + Movie.id + "' > " + Movie.name + "</a></td>" +
 								 "<td>" + Movie.style + "</td>" +
-								 "<td>" + Movie.duration + "</td>" +
+								 "<td>" + Movie.duration + " min " + "</td>" +
 								 "<td>" + Movie.distributor + "</td>" + 
 								 "<td>" + Movie.country + "</td>" + 
 								 "<td>" + Movie.year + "</td>"
 							    );
 				}
-			}
-			
+			}else if(data.status == "fail"){
+				alert("Something went wrong! Please try again!");
+				window.location.reload();
+			}			
 		});
 	}
 	
@@ -81,103 +83,105 @@ $.get("./LoginServlet", function(data){
 								 "<td>" + Movie.country + "</td>" + 
 								 "<td>" + Movie.year + "</td>");
 					}
+				}else if(data.status == "fail"){
+					alert("Something went wrong! Please try again!");
+					window.location.reload();
 				}
-			});
-			
+			});			
 		}
 		
 	//---------------------------------------------------------------------------------------------------------------------------
 		
 	function sortMovies(){
 			
-			var criteria = $("#criteria").val();
-			var ascDesc  = $("#ascOrDesc").val();
-						
-			 $("#table").find("tr:gt(0)").remove();
-		        switch(criteria){
-		            case "name":
-		                if(ascDesc == "ASC"){
-		                    allMovies.sort(function(a, b){
-		                        return(a.name > b.name) ? 1 : -1;
-		                    });
-		                }else{
-		                  allMovies.sort(function(a,b){
-		                      return (a.name < b.name) ? 1 : -1;
-		                  });
-		              }
-		              break;
-		            case "style":
-		            	if(ascDesc =="ASC"){
-		            		allMovies.sort(function(a,b){
-		            			return(a.style > b.style) ? 1 : -1;
-		            		});
-		            	}else{
-		            		allMovies.sort(function(a,b){
-		            			return(a.style < b.style) ? 1 : -1;
-		            		});
-		            	}
-		            	break;
-		            case "distributor":
-		            	if(ascDesc == "ASC"){
-		            		allMovies.sort(function(a,b){
-		            			return(a.distributor > b.distributor) ? 1 : -1;
-		            		});
-		            	}else{
-		            		allMovies.sort(function(a,b){
-		            			return(a.distributor < b.distributor) ? 1 : -1;
-		            		});
-		            	}
-		            	break;
-		            case "country":
-		            	if(ascDesc == "ASC"){
-		            		allMovies.sort(function(a,b){
-		            			return(a.country > b.country) ? 1 : -1;
-		            		});
-		            	}else{
-		            		allMovies.sort(function(a,b){
-		            			return (a.country < b.country) ? 1 : -1;
-		            		});
-		            	}
-		            	break;
-		            case "time":
-		            	if(ascDesc == "ASC"){
-		            		allMovies.sort(function(a,b){
-		            			return(a.duration > b.duration) ? 1 : (a.duration == b.duration) ? 0 : -1;
-		            		});
-		            	}else{
-		            		allMovies.sort(function(a,b){
-		            			return(a.duration < b.duration) ? 1 : -1;
-		            		});
-		            	}
-		            	break;
-		            case "year":
-		            	if(ascDesc == "ASC"){
-		            		allMovies.sort(function(a,b){
-		            			return(a.year > b.year) ? 1 :  (a.year == b.year) ? 0 : -1;
-		            		});
-		            	}else{
-		            		allMovies.sort(function(a,b){
-		            			return (a.year < b.year) ? 1 : -1;
-		            		});
-		            	}
-		            	break;
-		            default:
-		                return;
-		        }
-				for(Movie of allMovies){
-					$("#table").append("<tr>" + 
-							 "<td><a href ='movie.html?id=" + Movie.id + "' > " + Movie.name + "</a></td>" +
-							 "<td>" + Movie.style + "</td>" +
-							 "<td>" + Movie.duration + "</td>" +
-							 "<td>" + Movie.distributor + "</td>" + 
-							 "<td>" + Movie.country + "</td>" + 
-							 "<td>" + Movie.year + "</td>");
-				}
-		   
-		 
-		}
-			
-	//---------------------------------------------------------------------------------------------------------------------------
+		var criteria = $("#criteria").val();
+		var ascDesc  = $("#ascOrDesc").val();
+					
+		 $("#table").find("tr:gt(0)").remove();
+	        switch(criteria){
+	            case "name":
+	                if(ascDesc == "ASC"){
+	                    allMovies.sort(function(a, b){
+	                        return(a.name > b.name) ? 1 : -1;
+	                    });
+	                }else{
+	                  allMovies.sort(function(a,b){
+	                      return (a.name < b.name) ? 1 : -1;
+	                  });
+	              }
+	              break;
+	            case "style":
+	            	if(ascDesc =="ASC"){
+	            		allMovies.sort(function(a,b){
+	            			return(a.style > b.style) ? 1 : -1;
+	            		});
+	            	}else{
+	            		allMovies.sort(function(a,b){
+	            			return(a.style < b.style) ? 1 : -1;
+	            		});
+	            	}
+	            	break;
+	            case "distributor":
+	            	if(ascDesc == "ASC"){
+	            		allMovies.sort(function(a,b){
+	            			return(a.distributor > b.distributor) ? 1 : -1;
+	            		});
+	            	}else{
+	            		allMovies.sort(function(a,b){
+	            			return(a.distributor < b.distributor) ? 1 : -1;
+	            		});
+	            	}
+	            	break;
+	            case "country":
+	            	if(ascDesc == "ASC"){
+	            		allMovies.sort(function(a,b){
+	            			return(a.country > b.country) ? 1 : -1;
+	            		});
+	            	}else{
+	            		allMovies.sort(function(a,b){
+	            			return (a.country < b.country) ? 1 : -1;
+	            		});
+	            	}
+	            	break;
+	            case "time":
+	            	if(ascDesc == "ASC"){
+	            		allMovies.sort(function(a,b){
+	            			return(a.duration > b.duration) ? 1 : (a.duration == b.duration) ? 0 : -1;
+	            		});
+	            	}else{
+	            		allMovies.sort(function(a,b){
+	            			return(a.duration < b.duration) ? 1 : -1;
+	            		});
+	            	}
+	            	break;
+	            case "year":
+	            	if(ascDesc == "ASC"){
+	            		allMovies.sort(function(a,b){
+	            			return(a.year > b.year) ? 1 :  (a.year == b.year) ? 0 : -1;
+	            		});
+	            	}else{
+	            		allMovies.sort(function(a,b){
+	            			return (a.year < b.year) ? 1 : -1;
+	            		});
+	            	}
+	            	break;
+	            default:
+	                return;
+	        }
+			for(Movie of allMovies){
+				$("#table").append("<tr>" + 
+						 "<td><a href ='movie.html?id=" + Movie.id + "' > " + Movie.name + "</a></td>" +
+						 "<td>" + Movie.style + "</td>" +
+						 "<td>" + Movie.duration + "</td>" +
+						 "<td>" + Movie.distributor + "</td>" + 
+						 "<td>" + Movie.country + "</td>" + 
+						 "<td>" + Movie.year + "</td>");
+			}
+	   
+	 
+	}
+		
+//---------------------------------------------------------------------------------------------------------------------------
 	
 	$(document).ready(function(){	
 	

@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
 import dao.ProjectionDAO;
 import dao.SeatDAO;
 import dao.TicketDAO;
 import dao.UserDAO;
-import model.Movie;
 import model.Projection;
 import model.Seat;
 import model.Ticket;
@@ -30,6 +28,7 @@ public class BuyTicketServlet extends HttpServlet {
 
 			int projectionId = Integer.parseInt(request.getParameter("projectionId"));
 			int seatId = Integer.parseInt(request.getParameter("seatId"));
+			System.out.println("SEAT ID: " + seatId);
 			int userId = Integer.parseInt(request.getParameter("user"));
 			
 			ProjectionDAO projectionDao = new ProjectionDAO();
@@ -42,13 +41,14 @@ public class BuyTicketServlet extends HttpServlet {
 			User user = userDao.findUserById(userId);
 			
 			Ticket ticket = new Ticket(projection, seat, user);
-			
+			System.out.println("KARTA: " + ticket);
 			TicketDAO dao = new TicketDAO();
 			dao.addTicket(ticket);
 			
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
 		}
 

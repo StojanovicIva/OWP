@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'Oleo';
+  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
+       
+}
+
 body {
-	background-image: url("background2.jpg");
+	background-image: url("images/back21.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
+	font-family: Oleo;
 }
 
 ul {
@@ -10,7 +17,7 @@ ul {
 	margin-left:0cm;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #333;
+	background-color: transparent;
 	position: sticky;
 	top: 0;
 }
@@ -22,46 +29,52 @@ li {
 
 li a {
 	display: block;
-	color: white;
+	color: pink;
 	text-align: center;
 	padding: 20px 20px;
 	text-decoration: none;
 }
 
 li a:hover {
-	background-color: #804040;
-	
+	background-color: violet;
+	color: black;
 }
 
 h2{
-	color: yellow;
+	color: pink;
 	font-size: 45px;
 	margin-left:35%;
+	font-family: Oleo;
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;	
 }
 
 label{
-	color:yellow;
+	color:pink;
 	size: 15px;
 	margin-left: 30%;
 	margin-top:10%;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
 
 div{
 	display: inline-block;
-	
-	color:yellow;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	color:pink;
 	font-size: 25px;
 }
 input{
-	border: 2px solid yellow;
+	border: 2px solid black;
 	border-radius: 4px;
 	height: 40px;
 	font-size: 20px;
 	width: auto;
+	background-color: pink;
 }
 
 input:focus{
-	border: 3px solid #555;
+	border: 3px solid pink;
 }
 
 .oneSide{
@@ -80,7 +93,8 @@ input:focus{
 	font-size: 20px;
 	width: 800px;
 	height: 200px;
-	
+	border: 2px solid black;
+	background-color: pink;
 }
 .description{
 	margin-left: 250px;
@@ -96,10 +110,19 @@ input:focus{
 }
 
 #actors{
-	display: inline-block;
-	
-	border: 2px solid yellow;
+	display: inline-block;	
+	border: 2px solid black;
 	border-radius: 4px;
 	height: 180px;
 	font-size: 20px;
+	background-color: pink;
+}
+
+#addMovie{
+	color: pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	font-size: 30px;
+	background: transparent;	
+	
 }

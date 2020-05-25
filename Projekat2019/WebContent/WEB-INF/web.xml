@@ -302,4 +302,44 @@
     <servlet-name>TicketServlet</servlet-name>
     <url-pattern>/TicketServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProjectionIsInFuture</display-name>
+    <servlet-name>ProjectionIsInFuture</servlet-name>
+    <servlet-class>servlets.ProjectionIsInFuture</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProjectionIsInFuture</servlet-name>
+    <url-pattern>/ProjectionIsInFuture</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteProjectionServlet</display-name>
+    <servlet-name>DeleteProjectionServlet</servlet-name>
+    <servlet-class>servlets.DeleteProjectionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProjectionServlet</servlet-name>
+    <url-pattern>/DeleteProjectionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TicketsForProjection</display-name>
+    <servlet-name>TicketsForProjection</servlet-name>
+    <servlet-class>servlets.TicketsForProjection</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TicketsForProjection</servlet-name>
+    <url-pattern>/TicketsForProjection</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReportsServlet</display-name>
+    <servlet-name>ReportsServlet</servlet-name>
+    <servlet-class>servlets.ReportsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportsServlet</servlet-name>
+    <url-pattern>/ReportsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

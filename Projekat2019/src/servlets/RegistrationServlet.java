@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
-import model.Role;
 import model.User;
 
 public class RegistrationServlet extends HttpServlet {
@@ -20,12 +19,13 @@ public class RegistrationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		UserDAO dao = new UserDAO();
 		try {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String repeatedPassword = request.getParameter("repeatedPassword");
 			
-			if(UserDAO.findUserByUserName(username) != null) {
+			if(dao.findUserByUserName(username) != null) {
 				throw new Exception("This username already exists!");
 			}
 			if("".equals(username)) {
@@ -40,7 +40,6 @@ public class RegistrationServlet extends HttpServlet {
 			
 			User user = new User(username, password );
 			
-			UserDAO dao = new UserDAO();
 			dao.addUser(user);
 			
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);

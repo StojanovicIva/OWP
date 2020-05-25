@@ -17,20 +17,24 @@ public class AllUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDAO dao = new UserDAO();
-		
-		ArrayList<User> users = dao.getAllUsers();
-		
-		Map<String, Object> data = new LinkedHashMap<String, Object>();
-		data.put("users", users);
-		
-		request.setAttribute("data", data);
-		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
+		try{
+			UserDAO dao = new UserDAO();
+			
+			ArrayList<User> users = dao.getAllUsers();
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			data.put("users", users);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);	
+		}catch(Exception e){
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

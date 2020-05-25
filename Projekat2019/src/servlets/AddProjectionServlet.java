@@ -42,7 +42,6 @@ public class AddProjectionServlet extends HttpServlet {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 			
 			Date dateAndTime;
-			System.out.println("DATE: " + request.getParameter("fromTheDate"));
 			try {
 				java.util.Date date = dateFormat.parse(request.getParameter("dateAndTime"));
 				dateAndTime = date;
@@ -64,14 +63,14 @@ public class AddProjectionServlet extends HttpServlet {
 			
 			Projection projection = new Projection(movie, pt, hall, dateAndTime, price, user);
 			
-			System.out.println("Servlet PROJEKCIJA: " + projection);
 			ProjectionDAO pDao = new ProjectionDAO();
 			pDao.addProjection(projection);
 			
-			System.out.println("Dodao u dao");
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+
 			e.printStackTrace();
 		}
 	}

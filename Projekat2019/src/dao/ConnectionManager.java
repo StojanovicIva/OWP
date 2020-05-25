@@ -1,44 +1,43 @@
 package dao;
 
 import java.sql.Connection;
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
-import org.apache.commons.dbcp2.BasicDataSourceFactory;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionManager {
+	
+	private static final String DATABASE_NAME ="DataBase.db";
+	private static final String WINDOWS_PATH = "C:\\Users\\Iva\\git\\OWP\\Projekat2019\\db\\" +  DATABASE_NAME;
+	private static final String PATH = WINDOWS_PATH;
+	private static Connection connection;
 
-	private static final String DATABASE = "localhost:3306/bioskop";
-	private static final String USER_NAME = "root";
-	private static final String PASSWORD = "root";
-
-	private static DataSource dataSource;
-
+//---------------------------------------------------------------------------------------------------------------------
+	
 	public static void open() {
 		try {
-			Properties dataSourceProperties = new Properties();
-			dataSourceProperties.setProperty("driverClassName", "com.mysql.jdbc.Driver");
-			dataSourceProperties.setProperty("url", "jdbc:mysql://" + DATABASE + "?useSSL=false");
-			dataSourceProperties.setProperty("username", USER_NAME);
-			dataSourceProperties.setProperty("password", PASSWORD);
-			
-			dataSource = BasicDataSourceFactory.createDataSource(dataSourceProperties);
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:" + PATH);
 		} catch (Exception ex) {
-			// TODO Auto-generated catch block
 			ex.printStackTrace();
 		}
 	}
 
+//--------------------------------------------------------------------------------------------------------------------
+	
 	public static Connection getConnection() {
 		try {
-			return dataSource.getConnection();
-		} catch (Exception ex) {
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
-		}
-
-		return null;
+			return DriverManager.getConnection("jdbc:sqlite:" + PATH);	
+		} catch (Exception e) {
+			return null;
+		}		
 	}
 
+//--------------------------------------------------------------------------------------------------------------------
+	public static void close() {
+		try {
+			connection.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

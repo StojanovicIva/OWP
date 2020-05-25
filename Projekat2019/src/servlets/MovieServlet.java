@@ -17,6 +17,8 @@ public class MovieServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//FIND ONE MOVIE
+		
 		try {
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
@@ -32,6 +34,7 @@ public class MovieServlet extends HttpServlet {
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
 		}
 	}

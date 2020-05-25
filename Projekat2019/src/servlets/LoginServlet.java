@@ -38,8 +38,7 @@ public class LoginServlet extends HttpServlet {
 				throw new Exception("Username or password was incorect!");
 			}
 			
-			UserDAO dao = new UserDAO();
-			
+			UserDAO dao = new UserDAO();			
 			User user = dao.login(username, password);
 			
 			if(user == null) {
@@ -51,7 +50,6 @@ public class LoginServlet extends HttpServlet {
 		
 		}catch(Exception e) {
 			request.getRequestDispatcher("./FailServlet").forward(request, response);
-
 			e.printStackTrace();
 		}
 	}

@@ -4,52 +4,45 @@
 		<meta charset="UTF-8">
 		<title>Ticket</title>
 		
-		<script src="js/jquery-3.3.1.min.js"></script>
-		
+		<script src="js/jquery-3.3.1.min.js"></script>		
 		<script type="text/javascript" src="js/ticket.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="css/ticket.css">
-		
+				
+		<link rel="stylesheet" type="text/css" href="css/ticket.css">		
 	</head>
 	<body>
 		<header>
 			<!-- NAVBAR -->
 			<ul>
 				<li><a class = "active" href="index.html">Home</a></li>
-
 			</ul>
-		</header>
+		</header>				
 		
-		<main>
-		
-			<h2>Selected ticket:</h2>
+		<h2>Selected ticket:</h2>
 			
-			<h4> Click on the movie name to see details</h4>
+		<h4> Click on the movie name to see details</h4>
 		
-			<div class="container">
+		<div class="container">
 								
-					<div class = "form">
-						Movie:<br>
-						<a id="movieName"></a><br>
-						
-						Date and time:<br>
-						<a  id="dateAndTime" ></a><br>
-						
-						Projection type:<br>
-						<input name="type" id="type" disabled="disabled"><br>
-						
-						Hall: <br>
-						<input name="hall" id="hall" disabled="disabled"><br>
-						
-						Seat: <br>
-						<input name="seat" id="seat" disabled="disabled"><br>
-						
-						Price: <br>
-						<input name="price" id="price" disabled="disabled">
-					</div>
-					
-				</div>
-		
-		</main>
+			<div class = "form">
+				<br>
+				<a id="movieName" ></a><br>
+				
+				<label id="dateLabel" for="dateAndTime">Date and time:</label><br>
+				<a  id="dateAndTime" ></a><br>
+				
+				<label id="ptLabel">Projection <br>type:</label><br>
+				<input name="type" id="type" disabled="disabled"><br>
+				
+				<label id="hallLabel">Hall: <br></label>
+				<input name="hall" id="hall" disabled="disabled"><br>
+				
+				<label id="seatLabel">Seat: <br> </label>
+				<input name="seat" id="seat" disabled="disabled"><br>
+				
+				<label id="priceLabel">Price: <br></label>
+				<input name="price" id="price" disabled="disabled">
+			</div>
+			
+		</div>				
 	</body>
 	</html>

@@ -3,15 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
 		<link rel="stylesheet" href="css/w3.css">	
 		
 		<title>Cinema</title>
 		
 		<!-- jQuery -->
-		<script src="js/jquery-3.3.1.min.js"></script>
-		
-		<script type="text/javascript" src="js/index.js"></script>
-		
+		<script src="js/jquery-3.3.1.min.js"></script>	
+		<script type="text/javascript" src="js/index.js"></script>		
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		
 	</head>
@@ -26,44 +25,39 @@
 			</ul>
 			
 		</header>
-		
-		
+				
 		<!-- MODAL FOR LOGIN -->
 		<div class="bg-modal">
-			<div class ="modal-content">
-				
+			<div class ="modal-content">		
 				<div class="close">+</div>
 
-				 <img src="css/avatar.png"  id="avatar"> 
-				<form action="./LoginServlet" method="POST" id="logIn">
-					<input type="text" placeholder="Username" name="username" id="username">
-					<input type="password" placeholder="Password" name="password" id="password">
-					<button type="submit" >Log in </button>
-				</form>
-				<p>Don't have an account?<a href="registration.html">Create one!</a></p>
-
-			</div>
-		</div>		
-		
-		
-		<h1>Movies under the stars!</h1>
-		<h4>Click on the image, to see what's expecting you! :) </h4>
-
-		<div class="images">
-		    <img id="img1" src="css/images/picture2.jpg" onclick="onClick(this)" class="w3-hover-opacity">
-		    <img id="img2" src="css/images/picture3.jpg" onclick="onClick(this)" class="w3-hover-opacity">
-		    <img id="img3" src="css/images/picture5.jpg" onclick="onClick(this)" class="w3-hover-opacity">
-		</div>
-		
-		<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+				 	<img src="css/avatar.png"  id="avatar"> 
+					<form action="./LoginServlet" method="POST" id="logIn">
+						<input type="text" placeholder="Username" name="username" id="username">
+						<input type="password" placeholder="Password" name="password" id="password">
+						<button type="submit" >Log in </button>
+					</form>
+					<p>Don't have an account?<a href="registration.html">Create one!</a></p>
+				</div>
+			</div>		
 			
-			<span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-		    
-		    <div class="w3-modal-content w3-animate-zoom">
-			    <img id="img01" style="width:100%">
+			<h1>Movies under the stars!</h1>
+			<h4>Click on the image, to see what's expecting you! :) </h4>
+
+			<div class="images">
+		    	<img id="img1" src="css/images/picture2.jpg" onclick="onClick(this)" class="w3-hover-opacity">
+		    	<img id="img2" src="css/images/picture3.jpg" onclick="onClick(this)" class="w3-hover-opacity">
+		    	<img id="img3" src="css/images/picture5.jpg" onclick="onClick(this)" class="w3-hover-opacity">
 			</div>
-		</div>
 		
+			<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+			
+				<span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+		    
+		    	<div class="w3-modal-content w3-animate-zoom">
+			    	<img id="img01" style="width:100%">
+				</div>
+			</div>
  		<script> 
  			function onClick(element) {
  				document.getElementById("img01").src = element.src;
@@ -177,8 +171,10 @@
 				</tr>
 
 			</table>
+			
 		</div>
 		
+
 	</body>
 	<footer id="footer">
 		<div class = "footer1">

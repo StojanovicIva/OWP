@@ -2,9 +2,7 @@ $.get("./LoginServlet", function(data){
 	var loggedinUser = data.loggedinUser;
 	var id = window.location.search.split("=")[1];
 
-	
-	function openOneMovie(){
-		
+	function openOneMovie(){		
 		
 		$.get("./MovieServlet", {id:id}, function(data){
 			
@@ -21,6 +19,10 @@ $.get("./LoginServlet", function(data){
 				$("#country").val(data.movie.country);
 				$("#year").val(data.movie.year);
 				$("#description").val(data.movie.description);
+			
+			}else if(data.status == "fail"){
+				alert("Something went wrong! Please try again!");
+				window.location.reload();
 			}
 		});
 	}
@@ -36,22 +38,24 @@ $(document).ready(function(){
 			
 			if(data.status == "success"){
 				
-				var name = data.movie.name;
+				var name = data.movie.id;
 				var params = {
-						"name" : name
+						"id" : id
 				}
-				$.get("./CheckingForProjectionServlet", params, function(data){
+				$.post("./ProjectionIsInFuture", params, function(data){
 					
-					//DODATI PROVERU I ZA RASPRODATE KARTE
-					//AKO SU RASPRODATE, NE PRIKAZUJ DUGME!!!!!!
-					if(data.status == "success" && data.projections.length != 0){
-						$("#button").append("<button id='getTicketButton' type='submit'>GET TICKET</button>");
+					if(data.status == "success" && data.projections.length != 0 &&  data.numberOfFreeSeats > 0 && loggedinUser.role === "USER"){
+						$("#ul").append("<li id='getTicketLi'><button class='blinking' id='getTicketButton' type='submit'>CLICK HERE AND GET TICKET</button></li>");
 						
 						$("#getTicketButton").on("click", function(event){							
-							window.location.replace("./BuyingATicket.html?movieId=" + id);
+							window.location.replace("./BuyingATicket.html?movieId=" + id );
 							
 						});
-					}					
+				
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please try again!");
+						window.location.replace("./Movies.html");
+					}				
 				});
 			}
 		});			
@@ -90,29 +94,30 @@ $(document).ready(function(){
 				$.get("./UpdateMovieServlet", params, function(data){
 					if (data.status == "success"){
 							window.location.reload();
-						}
-					});
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please try again!");
+						window.location.reload();
+					}
 				});
+			});
 			
 			$("#deleteButton").on("click", function(data){
 				
 				var answer = window.confirm("Are You sure You want to delete movie?");
 				
 				if(answer){
-
-					alert("okej");
+			
 					$.get("./DeleteMovieServlet" ,  {id:id}, function(data){
-						alert("otisao na servlet");
+						
 						if(data.status == "success"){
 							window.location.replace("./Movies.html");
+						}else if(data.status == "fail"){
+							alert("Something went wrong! Please try again!");
+							window.location.reload();
 						}
 					});
 				}
-				
-				
 			});
-			}
-			
-		});
-
+		}	
+	});
 });

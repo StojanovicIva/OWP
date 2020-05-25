@@ -5,7 +5,6 @@ function openOneTicket(){
 	$.get("./TicketServlet", {id:id}, function(data){
 		
 		if(data.status == "success"){
-			console.log(data);
 			var ticket = data.ticket;
 			
 			var movie = $("#movieName");
@@ -18,6 +17,9 @@ function openOneTicket(){
 			$("#seat").val(data.ticket.seat.number);
 			$("#price").val(data.ticket.projection.price);
 
+		}else if(data.status == "fail"){
+			alert("Something went wrong! Please try again!");
+			window.location.reload();
 		}
 		
 	});

@@ -1,19 +1,19 @@
 package model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class Ticket {
 
 	public int id;
 	public Projection projection;
 	public Seat seat;
-	public Timestamp dateAndTime;
+	public Date dateAndTime;
 	public User user;
 
 	public Ticket() {
 	};
 
-	public Ticket(int id, Projection projection, Seat seat, Timestamp dateAndTime, User user) {
+	public Ticket(int id, Projection projection, Seat seat, Date dateAndTime, User user) {
 		this.id = id;
 		this.projection = projection;
 		this.seat = seat;
@@ -51,11 +51,11 @@ public class Ticket {
 		this.seat = seat;
 	}
 
-	public Timestamp getDateAndTime() {
+	public Date getDateAndTime() {
 		return dateAndTime;
 	}
 
-	public void setDateAndTime(Timestamp dateAndTime) {
+	public void setDateAndTime(Date dateAndTime) {
 		this.dateAndTime = dateAndTime;
 	}
 

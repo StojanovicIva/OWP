@@ -1,10 +1,7 @@
 $.get("./LoginServlet", function(data){
 	var loggedinUser = data.loggedinUser;
 
-
 	$(document).ready(function(){
-		
-		
 		
 		if(loggedinUser!= null && loggedinUser.role == "ADMINISTRATOR"){						
 			
@@ -47,8 +44,7 @@ $.get("./LoginServlet", function(data){
 			});
 			
 			
-			$("#addProjectionButton").on("click", function(){
-				alert("klik");
+			$("#addProjectionButton").on("click", function(){				
 				var params = {
 					"movieId": movieValue,
 					"dateAndTime" : $("#dateAndTime").val(),
@@ -58,10 +54,12 @@ $.get("./LoginServlet", function(data){
 					"adminsName" : loggedinUser.id
 				}
 				$.post("./AddProjectionServlet", params, function(data){
-					alert("bio u servletu");
 					if(data.status == "success"){
-						alert("success");
+						alert("Projection successfully added");
 						window.location.replace("./index.html");
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please, try again!");
+						window.location.reload();
 					}
 				});
 			});

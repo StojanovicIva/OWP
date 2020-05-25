@@ -1,9 +1,11 @@
 package dao;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import model.Role;
@@ -11,13 +13,16 @@ import model.User;
 
 public class UserDAO {
 	
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
+//-----------------------------------------------------------------------------------------------------------------------
 		//ALL USERS
 	
 	public ArrayList<User> getAllUsers(){
-		ArrayList<User> users = new ArrayList<User>();
 		
-		java.sql.Connection connection = ConnectionManager.getConnection();
+		Connection connection = ConnectionManager.getConnection();
+		
+		ArrayList<User> users = new ArrayList<User>();
 		
 		java.sql.Statement stmt = null;
 		ResultSet rset = null;
@@ -30,16 +35,14 @@ public class UserDAO {
 			
 			int index;
 			while(rset.next()) {
-				index = 1;
-				
+				index = 1;				
 				int id = rset.getInt(index++);
 				String username = rset.getString(index++);
 				String pass = rset.getString(index++);
-				Timestamp date = rset.getTimestamp(index++);
+				Date date = dateFormat.parse(rset.getString(index++));
 				Role role = Role.valueOf(rset.getString(index++));
 				
-				users.add(new User(id, username, pass, date, role));
-				
+				users.add(new User(id, username, pass, date, role));				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -63,7 +66,7 @@ public class UserDAO {
 		//SELECTED ONE
 	
 	public User findUserById(int id) {
-		
+				
 		Connection connection = ConnectionManager.getConnection();
 		
 		PreparedStatement pstmt = null;
@@ -72,54 +75,56 @@ public class UserDAO {
 		try {
 			
 			String query = "SELECT username, password, registrationDate, role FROM users WHERE id = ?";
-					
-					pstmt = connection.prepareStatement(query);
-					pstmt.setInt(1, id);
-					
-					rset = pstmt.executeQuery();
-					
-					int index;
-					if(rset.next()) {
-						index = 1;
-						
-						String username = rset.getString(index++);
-						String password = rset.getString(index++);
-						Timestamp date = rset.getTimestamp(index++);
-						Role role = Role.valueOf(rset.getString(index++));
-						
-						return new User(id, username, password, date, role);
-					}		
-				}catch(Exception e) {
-					e.printStackTrace();
-				}finally {
-					try {
-						pstmt.close();
-					}catch(Exception e) {
-						e.printStackTrace();
-					}
-					try {
-						connection.close();
-					}catch(Exception e) {
-						e.printStackTrace();
-					}
-				}
-			return null;	
+			
+			pstmt = connection.prepareStatement(query);
+			pstmt.setInt(1, id);
+			
+			rset = pstmt.executeQuery();
+
+			int index;
+			if(rset.next()) {
+				index = 1;		
+				String username = rset.getString(index++);
+				String password = rset.getString(index++);
+				Date date = dateFormat.parse(rset.getString(index++));
+				Role role = Role.valueOf(rset.getString(index++));
+				
+				
+				return new User(id, username, password, date, role);
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+ 
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
+			try {
+				connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;	
+	}
 	
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	//LOGIN 
 	
 	public User login(String username, String password) {
-
-		Connection conn = ConnectionManager.getConnection();
+		
+		Connection connection = ConnectionManager.getConnection();
 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		try {
 			String query = "SELECT id, registrationDate, role FROM users WHERE deleted = FALSE AND username = ? AND password = ?";
 
-			pstmt = conn.prepareStatement(query);
+			pstmt = connection.prepareStatement(query);
+			
 			int index = 1;
 			pstmt.setString(index++, username);
 			pstmt.setString(index++, password);
@@ -128,13 +133,11 @@ public class UserDAO {
 
 			if (rset.next()) {
 				index = 1;
-
 				int id = rset.getInt(index++);
-				Timestamp registrationDate = rset.getTimestamp(index++);
+				Date registrationDate = dateFormat.parse(rset.getString(index++));
 				Role role = Role.valueOf(rset.getString(index++));
 
 				return new User(id, username, password, registrationDate, role);
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,7 +153,7 @@ public class UserDAO {
 				ex1.printStackTrace();
 			}
 			try {
-				conn.close();
+				connection.close();
 			} catch (Exception ex1) {
 				ex1.printStackTrace();
 			}
@@ -160,8 +163,10 @@ public class UserDAO {
 
 //--------------------------------------------------------------------------------------------------------------------------
 	
-	//find user by username
-	public static User findUserByUserName(String username) {
+	//FIND USER BY USERNAME
+	
+	public User findUserByUserName(String username) {		
+	
 		Connection connection = ConnectionManager.getConnection();
 		
 		PreparedStatement pstmt = null;
@@ -176,11 +181,12 @@ public class UserDAO {
 			
 			rset = pstmt.executeQuery();
 			
+			int index;
 			if(rset.next()) {
-				int index = 1;
+				index = 1;
 				Integer id = rset.getInt(index++);
 				String password = rset.getString(index++);
-				Timestamp registrationDate = rset.getTimestamp(index++);
+				Date registrationDate = dateFormat.parse(rset.getString(index++));
 				Role role = Role.valueOf(rset.getString(index++));
 				
 				return new User(id, username, password, registrationDate, role);
@@ -210,10 +216,10 @@ public class UserDAO {
 	
 //-----------------------------------------------------------------------------------------------------------------------------
 	
-	//function for creating new user
+	//FUNCTION FOR CREATING NEW USER
 	
 	public boolean addUser(User user) {
-		
+				
 		Connection connection = ConnectionManager.getConnection();
 		
 		PreparedStatement pstmt = null;
@@ -246,12 +252,14 @@ public class UserDAO {
 	
 //----------------------------------------------------------------------------------------------------------------------------
 	
-	//for searching
+	//FUNCTION FOR SEARCHING
+	
 	public ArrayList<User> findUser(String uName){
-		ArrayList<User> users = new ArrayList<User>();
-		
+	
 		Connection connection = ConnectionManager.getConnection();
 		
+		ArrayList<User> users = new ArrayList<User>();
+				
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -264,12 +272,13 @@ public class UserDAO {
 			
 			rset = pstmt.executeQuery();
 			
+			int index;
 			while(rset.next()) {
-				int index = 1;
+				index = 1;
 				Integer id = rset.getInt(index++);
 				String username = rset.getString(index++);
 				String password = rset.getString(index++);
-				Timestamp registrationDate = rset.getTimestamp(index++);
+				Date registrationDate = dateFormat.parse(rset.getString(index++));
 				Role role = Role.valueOf(rset.getString(index++));
 				
 				users.add( new User(id, username, password, registrationDate, role));
@@ -299,12 +308,14 @@ public class UserDAO {
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-	//for searching
+	//FIND USER BY ROLE
+	
 	public ArrayList<User> findUserByRole(String role){
-		ArrayList<User> users = new ArrayList<User>();
-		
+	
 		Connection connection = ConnectionManager.getConnection();
 		
+		ArrayList<User> users = new ArrayList<User>();
+				
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -317,17 +328,17 @@ public class UserDAO {
 			
 			rset = pstmt.executeQuery();
 			
+			int index;
 			while(rset.next()) {
-				int index = 1;
+				index = 1;
 				Integer id = rset.getInt(index++);
 				String username = rset.getString(index++);
 				String password = rset.getString(index++);
-				Timestamp registrationDate = rset.getTimestamp(index++);
+				Date registrationDate = dateFormat.parse(rset.getString(index++));
 				Role rolee = Role.valueOf(rset.getString(index++));
 				
 				users.add( new User(id, username, password, registrationDate, rolee));
-			}
-			
+			}			
 		}catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -351,79 +362,91 @@ public class UserDAO {
 	}
 	
 //----------------------------------------------------------------------------------------------------------------------------
-		public boolean delete (int id) {
-			Connection conn = ConnectionManager.getConnection();
+		
+	//DELETE USER
+	
+	public boolean delete (int id) {
 
-			PreparedStatement pstmt = null;
-			try {
-				String query = "DELETE FROM users WHERE id = ?";
-				
-				pstmt = conn.prepareStatement(query);
-				int index = 1;
+		Connection connection = ConnectionManager.getConnection();
+			
+		PreparedStatement pstmt = null;
+		try {
+			String query = "DELETE FROM users WHERE id = ?";
+			
+			int index = 1;
+			pstmt = connection.prepareStatement(query);			
+			pstmt.setInt(index++, id);
+			
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
 
-				pstmt.setInt(index++, id);
-				
-				return pstmt.executeUpdate() == 1;
-				
-			}catch(Exception ex) {
-				ex.printStackTrace();
-
-			}finally {
-				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
-				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
-			}
-			return false;
-	}
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
+}
 
 //----------------------------------------------------------------------------------------------------------------------------
-		public boolean updatePass (int id, String pass) {
-			Connection conn = ConnectionManager.getConnection();
 
-			PreparedStatement pstmt = null;
-			try {
-				String query = "UPDATE users SET password = ? WHERE id = ?";
-				
-				pstmt = conn.prepareStatement(query);
-				int index = 1;
+	//FUNCTION FOR UPDATE PASSWORD
+	
+	public boolean updatePass (int id, String pass) {
 
-				pstmt.setString(index++, pass);
-				pstmt.setInt(index++, id);
-				
-				return pstmt.executeUpdate() == 1;
-				
-			}catch(Exception ex) {
-				ex.printStackTrace();
+		Connection connection = ConnectionManager.getConnection();
+		
+		PreparedStatement pstmt = null;
+		try {
+			String query = "UPDATE users SET password = ? WHERE id = ?";
+			
+			pstmt = connection.prepareStatement(query);
+			
+			int index = 1;
+			pstmt.setString(index++, pass);
+			pstmt.setInt(index++, id);
+			
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
 
-			}finally {
-				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
-				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
-			}
-			return false;
-	}
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
+}
 //----------------------------------------------------------------------------------------------------------------------------
-		public boolean updateRole (int id, String role) {
-			Connection conn = ConnectionManager.getConnection();
+	
+	//FUNCTION FOR UPDATE ROLE 
+	
+	public boolean updateRole (int id, String role) {
 
-			PreparedStatement pstmt = null;
-			try {
-				String query = "UPDATE users SET role = ? WHERE id = ?";
-				
-				pstmt = conn.prepareStatement(query);
-				int index = 1;
+		Connection connection = ConnectionManager.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			String query = "UPDATE users SET role = ? WHERE id = ?";
+			
+			pstmt = connection.prepareStatement(query);
+			
+			int index = 1;
+			pstmt.setString(index++, role);		
+			pstmt.setInt(index++, id);
+		
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
 
-				pstmt.setString(index++, role);		
-				pstmt.setInt(index++, id);
-
-				
-				return pstmt.executeUpdate() == 1;
-				
-			}catch(Exception ex) {
-				ex.printStackTrace();
-
-			}finally {
-				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
-				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
-			}
-			return false;
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
 	}
-	}
+	
+//-------------------------------------------------------------------------------------------------------------------
+
+}

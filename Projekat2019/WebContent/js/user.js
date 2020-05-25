@@ -44,10 +44,12 @@ function getAllTickets(){
 			for(ticket of allTickets){
 				$("#tableOfTickets").append("<tr>" + 
 								   "<td></td>" +
-								   "<td><a href='Ticket.html?id=" + ticket.id +"'>" + new Date(ticket.dateAndTime).toString().substring(0,21) + "</a></td>");
+								   "<td><a href='Ticket.html?id=" + ticket.id +"'>" + new Date(ticket.dateAndTime).toString().substring(0,21) + "</a></td></tr>");
 			}
-		}
-		
+		}else if(data.status == "fail"){
+			alert("Something went wrong! Please try again!");
+			window.location.reload();
+		}	
 	});
 }
 
@@ -66,37 +68,34 @@ $(document).ready(function(){
 	}
 	
 	else if(loggedinUser.id == id){
-		
 
-		
-
-		
-			$("#updateButton").on("click", function(event){
-				
-				var pass = $("#password").val();
-				var repPass = $("#repeatedPassword").val();
-				
-				if(pass === repPass){
-					alert("iste");
-				
-				alert("klik");
-				params = {
-						"user" : "user",
-						"id" : id,
-						"pass" : pass
-				}
+		$("#updateButton").on("click", function(event){
 			
-				$.post("./UpdateUserServlet", params, function(data){
-					alert("otiso u servlet");
-					if(data.status == "success"){
-						window.location.reload();
-					}
-				});
-				}else{
-					alert("Password and repeated password are not same!");
+			var pass = $("#password").val();
+			var repPass = $("#repeatedPassword").val();
+			
+			if(pass === repPass){
+			
+			params = {
+					"user" : "user",
+					"id" : id,
+					"pass" : pass
+			}
+		
+			$.post("./UpdateUserServlet", params, function(data){
+				if(data.status == "success"){
+					window.location.reload();
+				
+				}else if(data.status == "fail"){
+					alert("Something went wrong! Please try again!");
+					window.location.reload();
 				}
 			});
-		
+			}else{
+				alert("Password and repeated password are not same!");
+			}
+		});
+	
 		
 	}else if(loggedinUser.role == "ADMINISTRATOR"){
 			
@@ -115,13 +114,14 @@ $(document).ready(function(){
 				$.post("./UpdateUserServlet", params, function(data){
 					
 					if(data.status == "success"){
-						alert("success");
+						window.location.reload();
+					
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please try again!");
 						window.location.reload();
 					}
 				});
-				});
-		
-	}
-	
-});
+			});	
+		}		
+	});
 });

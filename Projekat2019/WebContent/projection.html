@@ -16,11 +16,9 @@
 	<body>
 
 		<!-- NAVBAR -->
-		<ul>
-			<li><a class = "active" href="#">Home</a></li>
-			<li><a href = "#">About</a></li>
+		<ul id="ul">
+			<li><a class = "active" href="index.html">Home</a></li>
 			<li><a href = "Movies.html">Movies</a></li>
-			<li><a href = "#">Log in</a></li>
 		</ul>
 		
 		<h2>Selected projection:</h2>
@@ -43,10 +41,27 @@
 					<input name="hall" id="hall" disabled="disabled"><br>
 					
 					Price: <br>
-					<input name="price" id="price" disabled="disabled">
+					<input name="price" id="price" disabled="disabled"><br>
+					
+										
+					Number of free seats: <br>
+					<input name = "numberOfFreeSeats" id = "numberOfFreeSeats" disabled= "disabled"><br>
+
 				</div>
 				
 			</div>
+			<div id="button">
+		
+		</div>
+		<h4 id="h4">Tickets for this projection: </h4>
+		<table id = "tableOfTickets" style="width:30%">
 	
+			<tr>
+			
+				<th>*</th>
+				<th>User</th>
+				<th>Date of purchase</th>
+			</tr>
+		</table>
 	</body>
 </html>

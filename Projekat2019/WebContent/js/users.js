@@ -21,12 +21,13 @@ $.get("./LoginServlet", function(data){
 									   "<td>" + new Date(user.registrationDate).toString().substring(16,21) + "</td>" +
 									   "<td>" + user.role.toString() + "</td>");
 				}
-			}
-			
+			}else if(data.status == "fail"){
+				alert("Something went wrong! Please try again!");
+				window.location.reload();
+			}			
 		});
 	}
 
-	
 //--------------------------------------------------------------------------------------------------------------------------------
 
 	function searchUsers(){
@@ -51,6 +52,9 @@ $.get("./LoginServlet", function(data){
 							   "<td>" + new Date(User.registrationDate).toString().substring(16,21) + "</td>" +
 							   "<td>" + User.role.toString() + "</td>");
 				}
+			}else if(data.status == "fail"){
+				alert("Something went wrong! Please try again!");
+				window.location.reload();
 			}
 		});
 	}
@@ -77,9 +81,12 @@ $.get("./LoginServlet", function(data){
 								   "<td>" + new Date(User.registrationDate).toString().substring(16,21) + "</td>" +
 								   "<td>" + User.role.toString() + "</td>");
 					}
+				}else if(data.status == "fail"){
+					alert("Something went wrong! Please try again!");
+					window.location.reload();
 				}
 			});
-	}
+		}
 	
 //--------------------------------------------------------------------------------------------------------------------------------
 	function sortUsers(){
@@ -130,12 +137,9 @@ $.get("./LoginServlet", function(data){
 		if(loggedinUser != null){
 			$("#myProfile").click(function(event){
 				window.location.replace("./User.html?id=" + loggedinUser.id);
-
 			});
 		}
-
 		getAllUsers();
-
 		
 		//open modal for sorting
 		document.getElementById("sortUsers").addEventListener("click", function(){
@@ -155,9 +159,5 @@ $.get("./LoginServlet", function(data){
 		$("#roleSelect").change(searchUsersRole);		
 		$("#search").click(searchUsers);
 		$("#sort").on("click", sortUsers);
-
-
-
 	});
-	
 });

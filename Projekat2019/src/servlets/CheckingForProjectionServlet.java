@@ -18,20 +18,25 @@ public class CheckingForProjectionServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = request.getParameter("name");
+		try{
+			String name = request.getParameter("name");
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			
+			ProjectionDAO dao = new ProjectionDAO();			
+			ArrayList<Projection> projections = dao.findProjectionByMovie(name);
+			
+			data.put("projections", projections);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);	
+	
+		}catch(Exception e){
 		
-		Map<String, Object> data = new LinkedHashMap<String, Object>();
-		
-		ProjectionDAO dao = new ProjectionDAO();
-		
-		ArrayList<Projection> projections = dao.findProjectionByMovie(name);
-		
-		data.put("projections", projections);
-		
-		request.setAttribute("data", data);
-		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}		
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

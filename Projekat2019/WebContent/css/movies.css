@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'Oleo';
+  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
+       
+}
+
 body {
-	background-image: url("background2.jpg");
+	background-image: url("images/back21.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
+	font-family: Oleo;
 }
 
 ul {
@@ -10,10 +17,9 @@ ul {
 	margin-left:0cm;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #333;
+	background-color: transparent;
 	position: sticky;
 	top: 0;
-	color:yellow;
 }
 
 li {
@@ -23,42 +29,48 @@ li {
 
 li a {
 	display: block;
-	color: white;
+	color: pink;
 	text-align: center;
 	padding: 20px 20px;
 	text-decoration: none;
+	font-family: Oleo;
 }
 
 li a:hover {
-	background-color: #804040;
+	background-color: violet;	
+	color: black;
 	
 }
 
 .active {
-	background-color: #804040;
+	background-color: palevioletred;
+	color: black;
 }
 
 h1{
 	font-size: 50pt;
 	font-style: italic;
-	color: yellow;
+	color: pink;
 	text-align: center;
+	font-family: Oleo;
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
 h2{
 	text-align: center;
-	color: yellow;	
+	color: pink;	
 	font-style: italic;
 	font-family: inherit;
+	font-family: Oleo;
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
 table{
 	text-align: center;
-	color: yellow;
+	color: black;
+  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 	font-size: 20pt;
-	color:yellow;
-	margin:  auto;
-	
+	margin:  auto;	
 }
 
 table, th, td {
@@ -66,40 +78,25 @@ table, th, td {
 }
 
 td{
-	background-color: black;
-	color: yellow;
+	background-color: transparent;
+	color: black;
 	text-decoration: inherit;
 	font-size: 20px;
+	font-family: Oleo;
+  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 }
 
 table a{
-	color: yellow;
+	color: black;
+	font-family: Oleo;
+  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	text-decoration: none;
 }
 
 table a:hover {
-	background-color: orange;
-	
+	background-color: violet;
+	color: black;
 }
-
-/* .modal{ */
-/* 	display: none; hidden by default */
-/* 	position:fixed;  */
-/* 	z-index:1; */
-/* 	left:0; */
-/* 	top:0; */
-/* 	width:100%; */
-/* 	height:100%; */
-/* 	overflow:auto; */
-/* 	background-color: black; */
-/* } */
-
-/* .modal-content{ */
-/* 	color:yellow; */
-/* 	margin: 15% auto; */
-/* 	padding: 20px; */
-/* 	border: 2px solid #888; */
-/* 	width:80%; */
-/* } */
 
 .bg-modal{
 	width: 100%;
@@ -128,23 +125,22 @@ table a:hover {
 
 .modal-content{
 	width: 500px;
-	height: 300px;
-	background-image: url("background2.jpg");
+	height: auto;
+	background-image: url("images/back21.jpg");
 	background-color: black;
 	border-radius: 4px;
 	text-align: center;
 	padding:20px;
 	position: relative;
-	color: yellow;
+	color: pink;
 	border: 2px solid;
-	border-color: yellow;
+	border-color: black;
 }
 
 input{
 	width: 50%;
 	display: block;
 	margin: 15px auto;
-	
 }
 
 .close{
@@ -154,7 +150,7 @@ input{
 	font-size: 42px;
 	transform:rotate(45deg);
 	cursor: pointer;
-	color: yellow;
+	color: pink;
 }
 
 #rangeDiv{
@@ -172,7 +168,7 @@ p{
 }
 
 #search{
-	border: 2px solid yellow;
+	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;
@@ -181,7 +177,7 @@ p{
 
 #sort{
 	margin-top: 20%;
-	border: 2px solid yellow;
+	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;

@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		
 		<title>Buying a ticket</title>
 		
 		<script src="js/jquery-3.3.1.min.js"></script>	
 		<script type="text/javascript" src="js/buyingATicket.js"></script>
-		
 		<link rel="stylesheet" type="text/css" href="css/buyingATicket.css">
 	</head>
 	<body>
@@ -15,43 +15,45 @@
 		<ul>
 			<li><a class = "active" href="./index.html">Home</a></li>			
 			<li><a href = "Movies.html">Movies</a></li>
-		</ul>
-		
-		
+		</ul>	
 		
 		<div class= "container" id="container">
 						
 <!-- ------------------------------------------------------------------------------------------------------------ -->				
-				<h2>Buy your ticket</h2>
-				
-				<div class ="firstStep" id="firstStep">
-								
-					<!-- table -->
-					<table id = "table" style="width:80%">
-						<tr>
-							<th>Date and time</th>
-							<th>Projection type</th>
-							<th>Hall</th>
-							<th>Price</th>
-							<th>Select</th>
-						</tr>
-					</table>
-				</div>
-<!-- ------------------------------------------------------------------------------------------------------------ -->				
+			<h2>Buy your ticket</h2>
 			
-	
-				<div class= "secondStep" id="secondStep">
-					<p>Choose your seat</p>
-				</div>
-				
-				<button type="submit"  id = "next">NEXT</button>
+			<div class ="firstStep" id="firstStep">
+							
+				<!-- table -->
+				<table id = "table" style="width:80%">
+					<tr>
+						<th>Date and time</th>
+						<th>Projection type</th>
+						<th>Hall</th>
+						<th>Price</th>
+						<th>Select</th>
+					</tr>
+				</table>
+			</div>
+<!-- ------------------------------------------------------------------------------------------------------------ -->				
+
+			<div class= "secondStep" id="secondStep">
+				<p>Choose your seat</p>
+			</div>
+			
+			<button type="submit"  id = "next">NEXT</button>
 
 <!---------------------------------------------------------------------------------------------------------------- -->
 			<div class="thirdStep" id="thirdStep">
-				Choosen seats: <input type="text" id="choosenSeats"><br>
-				Full price : <input type="text" id ="fullPrice"><br>
+				
+				<label id="ChoosenSeats">Choosen seats number: </label>
+				<input type="text" id="choosenSeats" disabled = "disabled"><br>
+				
+				<label id="FullPrice">Full price: </label>
+				<input type="text" id ="fullPrice" disabled = "disabled"><br>
+				
 			</div>
-		</div>	
-		
+
+		</div>			
 	</body>
 </html>

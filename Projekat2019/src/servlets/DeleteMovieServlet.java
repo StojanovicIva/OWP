@@ -36,6 +36,7 @@ public class DeleteMovieServlet extends HttpServlet {
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
 		}
 	}

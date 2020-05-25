@@ -14,7 +14,8 @@ $.get("./LoginServlet", function(data){
 			
 			if(data.status == "success"){
 				allProjections = data.projections;
-				
+				console.log(allProjections);
+
 				for(Projection of allProjections){
 					table.append("<tr>" +
 								 "<td><a href='projection.html?id=" + Projection.id + "'>" + Projection.movie.name + "</a></td>" +
@@ -23,6 +24,9 @@ $.get("./LoginServlet", function(data){
 								 "<td>" + Projection.hall.name + "</td>" + 
 								 "<td>" + Projection.price + "</td>");
 				}
+			}else if(data.status == "fail"){
+				alert("Something went wrong! Please try again!");
+				window.location.reload();
 			}
 		});	
 	}
@@ -150,18 +154,13 @@ $.get("./LoginServlet", function(data){
 										 "<td>" + Projection.hall.name + "</td>" + 
 										 "<td>" + Projection.price + "</td>");
 						}
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please try again!");
+						window.location.reload();
 					}
 					
 				});
 			} else if(option == "type"){
-//				$("#selectType").change(function(){
-//					
-//					var value = $(this).val();
-//					params = {
-//							"criterium" : option,
-//							"value" : value
-//					}
-//				});
 				var selectType = $("#selectType");
 				
 				$.get("./ProjectionTypeServlet", function(data){
@@ -196,23 +195,19 @@ $.get("./LoginServlet", function(data){
 													 "<td>" + Projection.hall.name + "</td>" + 
 													 "<td>" + Projection.price + "</td>");
 									}
+								}else if(data.status == "fail"){
+									alert("Something went wrong! Please try again!");
+									window.location.reload();
 								}
 							});
 						});
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please try again!");
+						window.location.reload();
 					}
 				});
 			
 			}else if(option == "hall"){
-//				$("#selectHall").change(function(){
-//					
-//					var value = $(this).val();
-//					alert(value);
-//						params = {
-//								"criterium" : option,
-//								"value" : value
-//					}
-//				});
-
 				var selectHall = $("#selectHall");
 				
 				$.get("./HallServlet", function(data){
@@ -247,9 +242,15 @@ $.get("./LoginServlet", function(data){
 													 "<td>" + Projection.hall.name + "</td>" + 
 													 "<td>" + Projection.price + "</td>");
 									}
+								}else if(data.status == "fail"){
+									alert("Something went wrong! Please try again!");
+									window.location.reload();
 								}
 							});
 						});
+					}else if(data.status == "fail"){
+						alert("Something went wrong! Please try again!");
+						window.location.reload();
 					}
 				});
 			}else if(option == "movieName"){
@@ -327,9 +328,11 @@ $.get("./LoginServlet", function(data){
 									 "<td>" + Projection.hall.name + "</td>" + 
 									 "<td>" + Projection.price + "</td>");
 					}
+				}else if(data.status == "fail"){
+					alert("Something went wrong! Please try again!");
+					window.location.reload();
 				}
-			});
-			
+			});			
 		}
 		
 //---------------------------------------------------------------------------------------------------------------------------
@@ -341,7 +344,6 @@ $(document).ready(function(){
 
 	//open modal for logging 
 	document.getElementById("login").addEventListener("click", function(){
-		console.log('upao');
 		document.querySelector(".bg-modal").style.display = "flex";
 	});
 	
@@ -440,12 +442,17 @@ $(document).ready(function(){
 												 "<td>" + Projection.hall.name + "</td>" + 
 												 "<td>" + Projection.price + "</td>");
 								}
+							}else if(data.status == "fail"){
+								alert("Something went wrong! Please try again!");
+								window.location.reload();
 							}
 						});
 					});
+				}else if(data.status == "fail"){
+					alert("Something went wrong! Please try again!");
+					window.location.reload();
 				}
 			});
-
 		
 		}else if(value == "hall"){
 			
@@ -489,9 +496,15 @@ $(document).ready(function(){
 												 "<td>" + Projection.hall.name + "</td>" + 
 												 "<td>" + Projection.price + "</td>");
 								}
+							}else if(data.status == "fail"){
+								alert("Something went wrong! Please try again!");
+								window.location.reload();
 							}
 						});
 					});
+				}else if(data.status == "fail"){
+					alert("Something went wrong! Please try again!");
+					window.location.reload();
 				}
 			});
 
@@ -506,18 +519,23 @@ $(document).ready(function(){
 			document.getElementById('timeDiv').style.display = "block";								
 
 		}else if(value == "nameAndDate"){
+			
 			document.getElementById('searchInput').style.display = "block";
 			document.getElementById('rangeDiv').style.display = "none";								
 			document.getElementById('typeDiv').style.display = "none";
 			document.getElementById('hallDiv').style.display = "none";	
 			document.getElementById('timeDiv').style.display = "block";	
+		
 		}else if(value == "nameAndPrice"){
+		
 			document.getElementById('searchInput').style.display = "block";
 			document.getElementById('rangeDiv').style.display = "block";								
 			document.getElementById('typeDiv').style.display = "none";
 			document.getElementById('hallDiv').style.display = "none";	
 			document.getElementById('timeDiv').style.display = "none";	
+		
 		}else if(value == "dateAndPrice"){
+		
 			document.getElementById('searchInput').style.display = "none";
 			document.getElementById('rangeDiv').style.display = "block";								
 			document.getElementById('typeDiv').style.display = "none";
@@ -526,7 +544,8 @@ $(document).ready(function(){
 		}
 		
 		else{
-		    document.getElementById('rangeDiv').style.display = "none";
+		    
+			document.getElementById('rangeDiv').style.display = "none";
 			document.getElementById('hallDiv').style.display = "none";								
 		    document.getElementById('searchInput').style.display = "block";
 			document.getElementById('typeDiv').style.display = "none";	
@@ -594,15 +613,11 @@ $(document).ready(function(){
 			//add li for all users
 			var ul = $("#ul");
 			ul.append("<li><a href = './users.html'>All users</a></li>");
+			ul.append("<li><a href = './Reports.html'>Reports</a></li>");
 			
-			$("#Drop").append("<a id='AddProjection' href= './AddProjection.html'>Add Projection</a>");
-			
+			$("#Drop").append("<a id='AddProjection' href= './AddProjection.html'>Add Projection</a>");	
 		}
-
-		}
-	
+	}
 //----------------------------------------------------------------------------------------------------------------------------------
-
-});
-
+	});
 });

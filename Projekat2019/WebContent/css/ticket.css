@@ -1,8 +1,29 @@
+@font-face {
+  font-family: 'Oleo';
+  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
+       
+}
+
 body {
-	background-image: url("background2.jpg");
+	background-image: url("images/back21.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
+	font-family: Oleo;
+}
+
+.container{
+	background-image: url("images/Ticket.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 0 auto;
+	width: 600px;
+	height: 300px;
+	
+}
+
+.form{
+	position: relative;	
 }
 
 ul {
@@ -10,7 +31,7 @@ ul {
 	margin-left:0cm;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #333;
+	background-color: transparent;
 	position: sticky;
 	top: 0;
 }
@@ -22,38 +43,43 @@ li {
 
 li a {
 	display: block;
-	color: white;
+	color: pink;
 	text-align: center;
 	padding: 20px 20px;
 	text-decoration: none;
 }
 
 li a:hover {
-	background-color: #804040;
-	
+	background-color: violet;
+	color:black;
 }
 .active {
-	background-color: #804040;
+	background-color: violet;
+	color:black;
 }
 
 h2{
-	color: yellow;
+	color: pink;
+  	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 	font-size:50px;
 	text-align: center;
 }
 
 h4{
-	color: yellow;
+	color: pink;
+  	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 	text-align: center;
 	font-size: 30px;
 	
 }
 
 input{
-	border: 2px solid yellow;
-	border-radius: 4px;
+	border: none;
+	background: none;
 	height: 40px;
 	font-size: 20px;
+	color: pink;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 input:focus{
@@ -61,16 +87,84 @@ input:focus{
 }
 
 div{
-	color:yellow;
-	font-size: 25px;
-	margin-left: 20%;
-}
-
-.form{
-	display: inline-block;
-	margin-left: 25%;
+	color: black;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+	font-size: 20px;
+	margin: 0 auto;
+	font-style: italic;
+	
 }
 
 #movieName{
-	font-size: 25px;
-	color: yellow;
+	position: absolute;
+	top: 12px;
+	left: 60px;
+	font-size: 30px;
+	color: black;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink; 
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+#dateAndTime{
+	position: absolute;
+	font-size: 20px;
+	color: black;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;	
+	top: 65px;
+	left: 80px;
+	white-space: nowrap;
+}
+
+#dateLabel{
+	position: absolute;
+	top: 110px;
+	left: 160px;
+}
+
+#type{
+	position: absolute;
+	top: 225px;
+	left: 265px;
+}
+
+#ptLabel{	
+	position: absolute;
+	top: 200px;
+	left: 200px;	
+}
+
+#hall{
+	position: absolute;
+	top: 225px;
+	left: 145px;
+}
+
+#hallLabel{	
+	position: absolute;
+	top: 200px;
+	left: 130px;	
+}
+#seat{
+	position: absolute;
+	top: 225px;
+	left: 345px;
+}
+
+#seatLabel{	
+	position: absolute;
+	top: 200px;
+	left: 320px;	
+}
+
+#price{
+	position: absolute;
+	top: 225px;
+	left: 525px;
+}
+
+#priceLabel{	
+	position: absolute;
+	top: 200px;
+	left: 520px;	
+}

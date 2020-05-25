@@ -30,11 +30,12 @@ public class SeatServlet extends HttpServlet {
 			
 			seats.add(seat);
 			data.put("seats", seats);
+			
 			request.setAttribute("data", data);
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
-			
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
 		}
 	}

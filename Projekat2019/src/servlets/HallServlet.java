@@ -13,21 +13,26 @@ import javax.servlet.http.HttpServletResponse;
 import dao.HallDAO;
 import model.Hall;
 
-
 public class HallServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HallDAO dao = new HallDAO();
 		
-		ArrayList<Hall> halls = dao.getAllHalls();
-		
-		Map<String, Object> data = new LinkedHashMap<String, Object>();
-		data.put("halls", halls);
-		
-		request.setAttribute("data", data);
-		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-	
+		try{
+			HallDAO dao = new HallDAO();
+			
+			ArrayList<Hall> halls = dao.getAllHalls();
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			data.put("halls", halls);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
+			
+		}catch(Exception e){
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

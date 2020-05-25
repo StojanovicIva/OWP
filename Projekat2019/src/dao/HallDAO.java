@@ -3,32 +3,33 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import model.Hall;
 import model.ProjectType;
-import model.Role;
-import model.User;
 
 public class HallDAO {
-
-	//ALL Halls
+	
+//------------------------------------------------------------------------------------------------------------------
+	
+	//GETTING ALL HALLS
 	
 	public ArrayList<Hall> getAllHalls(){
+		
+		Connection connection = ConnectionManager.getConnection();
+		
 		ArrayList<Hall> halls = new ArrayList<Hall>();
-		
-		java.sql.Connection connection = ConnectionManager.getConnection();
-		
+				
 		java.sql.Statement stmt = null;
 		ResultSet rset = null;
 		
 		try {
+			
 			String query = "SELECT * FROM hall";
 			
 			stmt = connection.createStatement();
-			rset = stmt.executeQuery(query);
-			
+			rset = stmt.executeQuery(query);								
+
 			int index;
 			while(rset.next()) {
 				index = 1;
@@ -36,15 +37,13 @@ public class HallDAO {
 				int id = rset.getInt(index++);
 				String name = rset.getString(index++);
 				int ptID = rset.getInt(index++);
-				
-				
+								
 				ProjectTypeDAO dao = new ProjectTypeDAO();
-				ProjectType projectType = dao.findProjectTypeById(ptID); 
-				
+				ProjectType projectType = dao.findProjectTypeById(ptID); 				
 						
-				halls.add(new Hall(id, name, projectType));
-				
+				halls.add(new Hall(id, name, projectType));						
 			}
+		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -64,10 +63,10 @@ public class HallDAO {
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------	
 
-	//SELECTED ONE
+	//FIND ONE HALL BY ID
 
 	public Hall findHallById(int id) {
-		
+						
 		Connection connection = ConnectionManager.getConnection();
 		
 		PreparedStatement pstmt = null;
@@ -77,40 +76,40 @@ public class HallDAO {
 			
 			String query = "SELECT name, projectType FROM hall WHERE id = ?";
 					
-					pstmt = connection.prepareStatement(query);
-					pstmt.setInt(1, id);
+			pstmt = connection.prepareStatement(query);
+			pstmt.setInt(1, id);
 					
-					rset = pstmt.executeQuery();
+			rset = pstmt.executeQuery();
 					
-					int index;
-					if(rset.next()) {
-						index = 1;
+			int index;															
+			if(rset.next()) {
+				index = 1;
 						
-						String name = rset.getString(index++);
-						int ptID = rset.getInt(index++);
+				String name = rset.getString(index++);
+				int ptID = rset.getInt(index++);
 				
-						ProjectTypeDAO dao = new ProjectTypeDAO();
-						ProjectType projectType = dao.findProjectTypeById(ptID); 
+				ProjectTypeDAO dao = new ProjectTypeDAO();
+				ProjectType projectType = dao.findProjectTypeById(ptID); 
 						
 						
-						return new Hall(id, name, projectType);
-					}		
-				}catch(Exception e) {
-					e.printStackTrace();
-				}finally {
-					try {
-						pstmt.close();
-					}catch(Exception e) {
-						e.printStackTrace();
-					}
-					try {
-						connection.close();
-					}catch(Exception e) {
-						e.printStackTrace();
-					}
-				}
-			return null;	
+				return new Hall(id, name, projectType);
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
+			try {
+				connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;	
+	}
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 

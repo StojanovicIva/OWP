@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import dao.TicketDAO;
 import model.Ticket;
 
-
-
 public class TicketServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,6 +31,7 @@ public class TicketServlet extends HttpServlet {
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
 		}
 	}

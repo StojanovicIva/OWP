@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'Oleo';
+  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
+       
+}
+
 body {
-	background-image: url("background2.jpg");
+	background-image: url("images/back21.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
+	font-family: Oleo;
 }
 
 ul {
@@ -10,7 +17,7 @@ ul {
 	margin-left:0cm;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #333;
+	background-color: transparent;
 	position: sticky;
 	top: 0;
 }
@@ -22,31 +29,39 @@ li {
 
 li a {
 	display: block;
-	color: white;
+	color: pink;
 	text-align: center;
 	padding: 20px 20px;
 	text-decoration: none;
+	font-family: Oleo;
 }
 
 li a:hover {
-	background-color: #804040;
+	background-color: orchid;
+	color: black;
 	
 }
 
 .active {
-	background-color: #804040;
+	background-color: pink;
+	color: black;
 }
 
 h1{
 	font-size: 50pt;
 	font-style: italic;
-	color: yellow;
+	color: pink;
 	text-align: center;
+	font-family: Oleo;
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
 table, th, td {
   border: 2px solid black;
-  color: yellow;
+  font-family: Oleo;
+  color: black;
+  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+  font-size: 25px;
 }
 
 .container{
@@ -56,10 +71,11 @@ table, th, td {
 }
 
 td{
-	background-color: black;
-	color: yellow;
+	background-color: transparent;	
 	text-decoration: inherit;
 	font-size: 20px;
+	color: black;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 table{
@@ -68,16 +84,17 @@ table{
 }
 
 table a{
-	color: yellow;
+	color: black;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 table a:hover {
-	background-color: #ffff80;
-	
+	background-color: palevioletred;
+	font-family: Oleo;
 }
 
 #findUserInput{
-	border: 2px solid yellow;
+	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;
@@ -86,7 +103,7 @@ table a:hover {
 }
 
 #roleSelect{
-	border: 2px solid yellow;
+	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;
@@ -95,11 +112,11 @@ table a:hover {
 }
 
 input:focus{
-	border: 3px solid #555;
+	border: 3px solid black;
 }
 
 #search{
-	border: 2px solid yellow;
+	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;
@@ -122,15 +139,15 @@ input:focus{
 .modal-content{
 	width: 500px;
 	height: 300px;
-	background-image: url("background2.jpg");
+	background-image: url("images/back21.jpg");
 	background-color: black;
 	border-radius: 4px;
 	text-align: center;
 	padding:20px;
 	position: relative;
-	color: yellow;
+	color: pink;
 	border: 2px solid;
-	border-color: yellow;
+	border-color: black;
 }
 
 
@@ -141,22 +158,6 @@ input:focus{
 	font-size: 42px;
 	transform:rotate(45deg);
 	cursor: pointer;
-	color: yellow;
+	color: pink;
 }
-
-
-/* .loader { */
-/*   border: 16px solid yellow; */
-/*   border-radius: 50%; */
-/*   border-top: 16px solid black; */
-/*   width: 20px; */
-/*   height: 20px; */
-/*   -webkit-animation: spin 2s linear infinite; Safari */
-/*   animation: spin 2s linear infinite; */
-/* } */
-
-/* @keyframes spin { */
-/*   0% { transform: rotate(0deg); } */
-/*   100% { transform: rotate(360deg); } */
-/* } */
 

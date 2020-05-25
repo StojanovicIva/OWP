@@ -18,17 +18,22 @@ public class AllProjections extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProjectionDAO dao = new ProjectionDAO();
 		
-		ArrayList<Projection> projections = dao.getAllProjections();
-		
-		Map<String, Object> data = new LinkedHashMap<String, Object>();
-		data.put("projections", projections);
-		
-		request.setAttribute("data", data);
-		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-		
-		
+		try{
+			ProjectionDAO dao = new ProjectionDAO();
+			
+			ArrayList<Projection> projections = dao.getAllProjections();
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			data.put("projections", projections);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
+				
+		}catch(Exception e){
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,11 +52,9 @@ public class AllProjections extends HttpServlet {
 			request.setAttribute("data", data);
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
-	
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
-		}
-		
-			}
-
+		}	
+	}
 }

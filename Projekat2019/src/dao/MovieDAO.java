@@ -3,24 +3,21 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 
 import model.Movie;
-import model.Role;
-import model.User;
 
 public class MovieDAO {
-
 	
+//-------------------------------------------------------------------------------------------------------------------------------------------------
 	//ALL MOVIES
 		
 	public ArrayList<Movie> getAllMovies(){
+		
+		Connection connection = ConnectionManager.getConnection();
+		
 		ArrayList<Movie> movies = new ArrayList<Movie>();
-		
-		java.sql.Connection connection = ConnectionManager.getConnection();
-		
+				
 		java.sql.Statement stmt = null;
 		ResultSet rset = null;
 		
@@ -73,7 +70,7 @@ public class MovieDAO {
 	public Movie findMovieById(int id) {
 		
 		Connection connection = ConnectionManager.getConnection();
-		
+				
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -81,54 +78,55 @@ public class MovieDAO {
 			
 			String query = "SELECT name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE id = ?";
 					
-					pstmt = connection.prepareStatement(query);
-					pstmt.setInt(1, id);
+			pstmt = connection.prepareStatement(query);
+			pstmt.setInt(1, id);
 					
-					rset = pstmt.executeQuery();
+			rset = pstmt.executeQuery();
 					
-					int index;
-					if(rset.next()) {
-						index = 1;
-						
-						String name = rset.getString(index++);
-						String director = rset.getString(index++);
-						String actors = rset.getString(index++);
-						String style = rset.getString(index++);
-						int duration = rset.getInt(index++);
-						String distributor = rset.getString(index++);
-						String country = rset.getString(index++);
-						int year = rset.getInt(index++);
-						String description = rset.getString(index++);
-						int deleted = rset.getInt(index++);
-						
-						
-						return new Movie(id, name, director, actors, style, duration, distributor, country, year, description, deleted);
-					}		
-				}catch(Exception e) {
-					e.printStackTrace();
-				}finally {
-					try {
-						pstmt.close();
-					}catch(Exception e) {
-						e.printStackTrace();
-					}
-					try {
-						connection.close();
-					}catch(Exception e) {
-						e.printStackTrace();
-					}
-				}
-			return null;	
+			int index;
+			if(rset.next()) {
+				index = 1;
+				
+				String name = rset.getString(index++);
+				String director = rset.getString(index++);
+				String actors = rset.getString(index++);
+				String style = rset.getString(index++);
+				int duration = rset.getInt(index++);
+				String distributor = rset.getString(index++);
+				String country = rset.getString(index++);
+				int year = rset.getInt(index++);
+				String description = rset.getString(index++);
+				int deleted = rset.getInt(index++);
+				
+				
+				return new Movie(id, name, director, actors, style, duration, distributor, country, year, description, deleted);
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
+			try {
+				connection.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;	
+	}
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 		
+	//FIND MOVIE BY MOVIE NAME
+	
 	public ArrayList<Movie> findMovieByName(String movieName) {
 	
-		System.out.println("Upao u dao name");
-		ArrayList<Movie> movies = new ArrayList<Movie>();
-		
 		Connection connection = ConnectionManager.getConnection();
+		
+		ArrayList<Movie> movies = new ArrayList<Movie>();			
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -182,71 +180,76 @@ public class MovieDAO {
 	}
 		
 //-----------------------------------------------------------------------------------------------------------------------------
+	
+	//FIND MOVIE BY MOVIE STYLE 
+	
 	public ArrayList<Movie> findMovieByStyle(String movieStyle) {
 			
-			ArrayList<Movie> movies = new ArrayList<Movie>();
+		Connection connection = ConnectionManager.getConnection();
+		
+		ArrayList<Movie> movies = new ArrayList<Movie>();
+						
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 			
-			Connection connection = ConnectionManager.getConnection();
+		try {
+				
+			String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE style LIKE ? AND deleted = 0";
 			
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, "%" + movieStyle + "%");
 			
-			try {
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				int index = 1;
+				Integer id = rset.getInt(index++);
+				String nameMovie = rset.getString(index++);
+				String director = rset.getString(index++);
+				String actors = rset.getString(index++);
+				String style = rset.getString(index++);
+				int duration = rset.getInt(index++);
+				String distributor = rset.getString(index++);
+				String country = rset.getString(index++);
+				int year = rset.getInt(index++);
+				String description = rset.getString(index++);
+				int deleted = rset.getInt(index++);
 				
-				String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE style LIKE ? AND deleted = 0";
-				
-				pstmt = connection.prepareStatement(query);
-				pstmt.setString(1, movieStyle + "%");
-				
-				rset = pstmt.executeQuery();
-				
-				while(rset.next()) {
-					int index = 1;
-					Integer id = rset.getInt(index++);
-					String nameMovie = rset.getString(index++);
-					String director = rset.getString(index++);
-					String actors = rset.getString(index++);
-					String style = rset.getString(index++);
-					int duration = rset.getInt(index++);
-					String distributor = rset.getString(index++);
-					String country = rset.getString(index++);
-					int year = rset.getInt(index++);
-					String description = rset.getString(index++);
-					int deleted = rset.getInt(index++);
-					
-					movies.add(new Movie(id, nameMovie, director, actors, style, duration, distributor, country, year, description, deleted));
-				}
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					pstmt.close();
-				} catch (Exception ex1) {
-					ex1.printStackTrace();
-				}
-				try {
-					rset.close();
-				} catch (Exception ex1) {
-					ex1.printStackTrace();
-				}
-				try {
-					connection.close();
-				} catch (Exception ex1) {
-					ex1.printStackTrace();
-				}
+				movies.add(new Movie(id, nameMovie, director, actors, style, duration, distributor, country, year, description, deleted));
 			}
-			return movies;		
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+			try {
+				rset.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
 		}
+		return movies;		
+	}
 			
 //-----------------------------------------------------------------------------------------------------------------------------
 
+	//FIND MOVIE BY MOVIE DISTRIBUTOR
+	
 	public ArrayList<Movie> findMovieByDistributor(String movieDistributor) {
 	
-		ArrayList<Movie> movies = new ArrayList<Movie>();
-		
 		Connection connection = ConnectionManager.getConnection();
 		
+		ArrayList<Movie> movies = new ArrayList<Movie>();
+				
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -255,7 +258,7 @@ public class MovieDAO {
 			String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE distributor LIKE ? AND deleted = 0";
 			
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, movieDistributor + "%");
+			pstmt.setString(1, "%" + movieDistributor + "%");
 			
 			rset = pstmt.executeQuery();
 			
@@ -300,13 +303,14 @@ public class MovieDAO {
 	
 //-----------------------------------------------------------------------------------------------------------------------------
 	
+	//FIND MOVIE BY COUNTRY
+	
 	public ArrayList<Movie> findMovieByCountry(String movieCountry) {
-		
-		
-		ArrayList<Movie> movies = new ArrayList<Movie>();
 		
 		Connection connection = ConnectionManager.getConnection();
 		
+		ArrayList<Movie> movies = new ArrayList<Movie>();
+				
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -315,7 +319,7 @@ public class MovieDAO {
 			String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE country LIKE ? AND deleted = 0";
 			
 			pstmt = connection.prepareStatement(query);
-			pstmt.setString(1, movieCountry + "%");
+			pstmt.setString(1, "%" + movieCountry + "%");
 			
 			rset = pstmt.executeQuery();
 			
@@ -360,18 +364,20 @@ public class MovieDAO {
 		
 //-----------------------------------------------------------------------------------------------------------------------------
 	
+	//FIND MOVIE BY RANGE OF TIME
+	
 	public ArrayList<Movie> findMovieByRangeOfTime(int fromThe, int to) {
-		
-		ArrayList<Movie> movies = new ArrayList<Movie>();
 		
 		Connection connection = ConnectionManager.getConnection();
 		
+		ArrayList<Movie> movies = new ArrayList<Movie>();
+				
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
 		try {
 			
-			String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE duration > ? AND duration < ? AND deleted = 0";
+			String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE duration >= ? AND duration <= ? AND deleted = 0";
 			
 			pstmt = connection.prepareStatement(query);
 			
@@ -380,7 +386,7 @@ public class MovieDAO {
 			pstmt.setInt(index++, to);
 			
 			rset = pstmt.executeQuery();
-			
+						
 			while(rset.next()) {
 				index=1;
 				Integer id = rset.getInt(index++);
@@ -422,189 +428,204 @@ public class MovieDAO {
 			
 //-----------------------------------------------------------------------------------------------------------------------------
 	
-		public ArrayList<Movie> findMovieByRangeOfDate(int fromThe, int to) {
+	//FIND MOVIE BY RANGE OF DATE
+	
+	public ArrayList<Movie> findMovieByRangeOfDate(int fromThe, int to) {
+
+		Connection connection = ConnectionManager.getConnection();
 		
-			System.out.println("Upao u dao name");
-			ArrayList<Movie> movies = new ArrayList<Movie>();
-			
-			Connection connection = ConnectionManager.getConnection();
-			
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			
-			try {
-				
-				String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE year > ? AND year < ? AND deleted = 0";
-				
-				pstmt = connection.prepareStatement(query);
-				
-				int index=1;
-				pstmt.setInt(index++, fromThe);
-				pstmt.setInt(index++, to);
-				
-				rset = pstmt.executeQuery();
-				
-				while(rset.next()) {
-					index = 1;
-					Integer id = rset.getInt(index++);
-					String nameMovie = rset.getString(index++);
-					String director = rset.getString(index++);
-					String actors = rset.getString(index++);
-					String style = rset.getString(index++);
-					int duration = rset.getInt(index++);
-					String distributor = rset.getString(index++);
-					String country = rset.getString(index++);
-					int year = rset.getInt(index++);
-					String description = rset.getString(index++);
-					int deleted = rset.getInt(index++);
+		ArrayList<Movie> movies = new ArrayList<Movie>();
 					
-					movies.add(new Movie(id, nameMovie, director, actors, style, duration, distributor, country, year, description, deleted));
-				}
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					pstmt.close();
-				} catch (Exception ex1) {
-					ex1.printStackTrace();
-				}
-				try {
-					rset.close();
-				} catch (Exception ex1) {
-					ex1.printStackTrace();
-				}
-				try {
-					connection.close();
-				} catch (Exception ex1) {
-					ex1.printStackTrace();
-				}
-			}
-			return movies;		
-		}
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
 			
+			String query = "SELECT id, name, director, actors, style, duration, distributor, country, year, description, deleted FROM movies WHERE year >= ? AND year <= ? AND deleted = 0";
+			
+			pstmt = connection.prepareStatement(query);
+			
+			int index=1;
+			pstmt.setInt(index++, fromThe);
+			pstmt.setInt(index++, to);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				index = 1;
+				Integer id = rset.getInt(index++);
+				String nameMovie = rset.getString(index++);
+				String director = rset.getString(index++);
+				String actors = rset.getString(index++);
+				String style = rset.getString(index++);
+				int duration = rset.getInt(index++);
+				String distributor = rset.getString(index++);
+				String country = rset.getString(index++);
+				int year = rset.getInt(index++);
+				String description = rset.getString(index++);
+				int deleted = rset.getInt(index++);
+				
+				movies.add(new Movie(id, nameMovie, director, actors, style, duration, distributor, country, year, description, deleted));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+			try {
+				rset.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (Exception ex1) {
+				ex1.printStackTrace();
+			}
+		}
+		return movies;		
+	}
+		
 //-----------------------------------------------------------------------------------------------------------------------------
-		//function for creating new movie
 		
-		public boolean addMovie(Movie movie) {
+	//FUNCTION FOR CREATING NEW MOVIE
+		
+	public boolean addMovie(Movie movie) {
+		
+		Connection connection = ConnectionManager.getConnection();
+					
+		PreparedStatement pstmt = null;
+		try {
+			String query = "INSERT INTO movies (name, director, actors, style, duration, distributor, country, year, description, deleted) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 0 )";
 			
-			Connection connection = ConnectionManager.getConnection();
+			pstmt = connection.prepareStatement(query);
 			
-			PreparedStatement pstmt = null;
+			int index = 1;
+			pstmt.setString(index++, movie.getName());
+			pstmt.setString(index++, movie.getDirector());
+			pstmt.setString(index++, movie.getActors());
+			pstmt.setString(index++, movie.getStyle());
+			pstmt.setInt(index++, movie.getDuration());
+			pstmt.setString(index++, movie.getDistributor());
+			pstmt.setString(index++, movie.getCountry());
+			pstmt.setInt(index++, movie.getYear());
+			pstmt.setString(index++, movie.getDescription());
+			
+			return pstmt.executeUpdate() == 1;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
 			try {
-				String query = "INSERT INTO movies (name, director, actors, style, duration, distributor, country, year, description, deleted) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 0 )";
-				
-				pstmt = connection.prepareStatement(query);
-				
-				int index = 1;
-				pstmt.setString(index++, movie.getName());
-				pstmt.setString(index++, movie.getDirector());
-				pstmt.setString(index++, movie.getActors());
-				pstmt.setString(index++, movie.getStyle());
-				pstmt.setInt(index++, movie.getDuration());
-				pstmt.setString(index++, movie.getDistributor());
-				pstmt.setString(index++, movie.getCountry());
-				pstmt.setInt(index++, movie.getYear());
-				pstmt.setString(index++, movie.getDescription());
-				
-				return pstmt.executeUpdate() == 1;
-			}catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				try {
-					pstmt.close();
-				}catch(Exception e1) {
-					e1.printStackTrace();
-				}
-				try {
-					connection.close();
-				}catch(Exception e1) {
-					e1.printStackTrace();
-				}
+				pstmt.close();
+			}catch(Exception e1) {
+				e1.printStackTrace();
 			}
-			return false;
+			try {
+				connection.close();
+			}catch(Exception e1) {
+				e1.printStackTrace();
+			}
 		}
-		
-	//----------------------------------------------------------------------------------------------------------------------------
-		public boolean update(Movie updatedMovie) {
-			Connection conn = ConnectionManager.getConnection();
+		return false;
+	}
+	
+//----------------------------------------------------------------------------------------------------------------------------
 
-			PreparedStatement pstmt = null;
-			try {
-				String query = "UPDATE movies SET name = ?, director = ?, actors = ?, style = ?, duration = ?, distributor = ?, country = ?, year = ?, description = ?  WHERE id = ?";
-				
-				pstmt = conn.prepareStatement(query);
-				int index = 1;
-				pstmt.setString(index++, updatedMovie.getName());
-				pstmt.setString(index++, updatedMovie.getDirector());
-				pstmt.setString(index++, updatedMovie.getActors());
-				pstmt.setString(index++, updatedMovie.getStyle());
-				pstmt.setInt(index++, updatedMovie.getDuration());
-				pstmt.setString(index++, updatedMovie.getDistributor());
-				pstmt.setString(index++, updatedMovie.getCountry());
-				pstmt.setInt(index++, updatedMovie.getYear());
-				pstmt.setString(index++, updatedMovie.getDescription());
-				pstmt.setInt(index++, updatedMovie.getId());
-				
-				return pstmt.executeUpdate() == 1;
-				
-			}catch(Exception ex) {
-				ex.printStackTrace();
+	//FUNCTION FOR UPDATE
+	
+	public boolean update(Movie updatedMovie) {
+			
+		Connection connection = ConnectionManager.getConnection();
 
-			}finally {
-				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
-				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
-			}
-			return false;
+		PreparedStatement pstmt = null;
+		try {
+			String query = "UPDATE movies SET name = ?, director = ?, actors = ?, style = ?, duration = ?, distributor = ?, country = ?, year = ?, description = ?  WHERE id = ?";
+			
+			pstmt = connection.prepareStatement(query);
+			int index = 1;
+			pstmt.setString(index++, updatedMovie.getName());
+			pstmt.setString(index++, updatedMovie.getDirector());
+			pstmt.setString(index++, updatedMovie.getActors());
+			pstmt.setString(index++, updatedMovie.getStyle());
+			pstmt.setInt(index++, updatedMovie.getDuration());
+			pstmt.setString(index++, updatedMovie.getDistributor());
+			pstmt.setString(index++, updatedMovie.getCountry());
+			pstmt.setInt(index++, updatedMovie.getYear());
+			pstmt.setString(index++, updatedMovie.getDescription());
+			pstmt.setInt(index++, updatedMovie.getId());
+			
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
 	}
 		
 //----------------------------------------------------------------------------------------------------------------------------
-		public boolean deleteMovieWithProjection (int id ) {
-			Connection conn = ConnectionManager.getConnection();
+	
+	//DELETE MOVIE WITH PROJECTION
+	
+	public boolean deleteMovieWithProjection (int id ) {			
+			
+		Connection connection = ConnectionManager.getConnection();
 
-			PreparedStatement pstmt = null;
-			try {
-				String query = "UPDATE movies SET deleted = 1 WHERE id = ?";
-				
-				pstmt = conn.prepareStatement(query);
-				int index = 1;
+		PreparedStatement pstmt = null;
+		try {
+			String query = "UPDATE movies SET deleted = 1 WHERE id = ?";
+			
+			pstmt = connection.prepareStatement(query);
+			int index = 1;
 
-				pstmt.setInt(index++, id);
-				
-				return pstmt.executeUpdate() == 1;
-				
-			}catch(Exception ex) {
-				ex.printStackTrace();
+			pstmt.setInt(index++, id);
+			
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
 
-			}finally {
-				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
-				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
-			}
-			return false;
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
 	}
 
 //----------------------------------------------------------------------------------------------------------------------------
-		public boolean delete (int id) {
-			Connection conn = ConnectionManager.getConnection();
 
-			PreparedStatement pstmt = null;
-			try {
-				String query = "DELETE FROM movies WHERE id = ?";
-				
-				pstmt = conn.prepareStatement(query);
-				int index = 1;
+	//DELETE MOVIE WITH NO PROJECTION
+	
+	public boolean delete (int id) {			
+			
+		Connection connection = ConnectionManager.getConnection();
 
-				pstmt.setInt(index++, id);
-				
-				return pstmt.executeUpdate() == 1;
-				
-			}catch(Exception ex) {
-				ex.printStackTrace();
+		PreparedStatement pstmt = null;
+		try {
+			String query = "DELETE FROM movies WHERE id = ?";
+			
+			pstmt = connection.prepareStatement(query);
+			int index = 1;
 
-			}finally {
-				try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
-				try {conn.close();} catch (Exception ex1) {ex1.printStackTrace();}		
-			}
-			return false;
+			pstmt.setInt(index++, id);
+			
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
+	
 	}
-}
+	}

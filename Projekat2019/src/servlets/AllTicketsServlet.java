@@ -13,16 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import dao.TicketDAO;
 import model.Ticket;
 
-
-
-
 public class AllTicketsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		try {
-			
 			Integer userId = Integer.parseInt(request.getParameter("id"));
 			
 			TicketDAO dao = new TicketDAO();
@@ -36,9 +32,9 @@ public class AllTicketsServlet extends HttpServlet {
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
-		}
-		
+		}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

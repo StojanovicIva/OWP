@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'Oleo';
+  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
+       
+}
+
 body {
-	background-image: url("background2.jpg");
+	background-image: url("images/back21.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
+	font-family: Oleo;	
 }
 
 ul {
@@ -29,11 +36,13 @@ li a {
 }
 
 li a:hover {
-	background-color: #804040;
+	background-color: #ffff80;
+	color: black;
 	
 }
 .active {
-	background-color: #804040;
+	background-color: #ffff4f;
+	color: black;
 }
 
 h2{
@@ -73,8 +82,8 @@ table a, #secondTable a{
 }
 
 table a:hover, #secondTable a:hover {
-	background-color: #804040;
-	
+	background-color: #ffff4f;
+	color: black;
 }
 
  .secondStep, .container, .thirdStep{
@@ -84,8 +93,16 @@ table a:hover, #secondTable a:hover {
 
 .secondStep{
 	margin-left:10%;
-	width: 280px;
+	width: 650px;
 	margin-bottom: 4%;	
+}
+
+.thirdStep{
+	margin-left: 25%;
+	margin-bottom: 4%;
+	width:  500px;
+	height: 100px;
+	white-space: nowrap;	
 }
 
 .seatButton{
@@ -117,4 +134,49 @@ p{
 
 #next{
 	display:none;
+}
+
+#next{
+	border: 2px solid yellow;
+	border-radius: 4px;
+	font-size: 15px;
+	margin-left: 10%;
+	text-decoration: blink;
+}
+
+#ChoosenSeats, #FullPrice{
+	color:yellow;
+	font-size: 25px;
+	white-space: nowrap;
+
+}
+
+#choosenSeats, #fullPrice{
+	color: yellow;
+	border: none;
+	background: none;
+	font-size: 25px;
+	white-space: nowrap;
+	
+}
+
+#getTicket{
+	color: yellow;
+	background-image: url("images/back1.jpg");	
+	border: none;
+	font-size: 20px;
+	margin-left: 30%;
+	margin-top: 1%;
+	
+}
+
+.blinking{
+    animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+    0%{     color: yellow;    }
+    49%{    color: yellow; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: yellow;    }
 }

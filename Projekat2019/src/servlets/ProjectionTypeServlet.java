@@ -18,16 +18,20 @@ public class ProjectionTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProjectTypeDAO dao = new ProjectTypeDAO();
-		
-		ArrayList<ProjectType> projectTypes = dao.getAllProjectTypes();
-		
-		Map<String, Object> data = new LinkedHashMap<String, Object>();
-		data.put("projectTypes", projectTypes);
-		
-		request.setAttribute("data", data);
-		request.getRequestDispatcher("./SuccessServlet").forward(request, response);
-	
+		try{
+			ProjectTypeDAO dao = new ProjectTypeDAO();
+			
+			ArrayList<ProjectType> projectTypes = dao.getAllProjectTypes();
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			data.put("projectTypes", projectTypes);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);	
+		}catch(Exception e){
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

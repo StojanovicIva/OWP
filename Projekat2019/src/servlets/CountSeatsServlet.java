@@ -13,26 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 import dao.SeatDAO;
 import model.Seat;
 
-
-
 public class CountSeatsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			Integer hallId = Integer.parseInt(request.getParameter("id"));
-			System.out.println("HALL ID: " + hallId);
+			Integer hallId = Integer.parseInt(request.getParameter("id"));			
 			
-			SeatDAO dao = new SeatDAO();			
-			
+			SeatDAO dao = new SeatDAO();						
 			ArrayList<Seat> seats = dao.getAllSeats(hallId);
 						
 			Map<String, Object> data = new LinkedHashMap<String, Object>();
 			data.put("seats", seats);
+			
 			request.setAttribute("data", data);
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 		
 		}catch(Exception e) {
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
 			e.printStackTrace();
 		}
 	}

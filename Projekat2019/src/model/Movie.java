@@ -1,13 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Movie {
 	
 	private int id;
 	private String name;
 	private String director;
-	//private ArrayList<String> actors;
 	private String actors;
 	private String style;
 	private int duration;

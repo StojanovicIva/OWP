@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Reports</title>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="js/reports.js"></script> 
+		<link rel="stylesheet" type="text/css" href="css/reports.css">	
+	</head>
+	<body>
+		<ul id="ul">
+			<li><a class = "active" href="index.html">Home</a></li>
+			<li><a id= "enterReports">Enter date</a></li>
+			<li><a id = "sortReports">Sort reports</a>
+		</ul>
+
+		<!-- MODAL FOR SORT -->
+		<div class="bgg-modal">
+			<div class ="modal-content">
+				
+				<div class="closeSort">+</div>
+
+					<p>Sort by one of the following criteria</p>
+					
+					<select id="criteria" name ="criteria" >
+						<option  value="projections">Sort by number of projections</option>
+						<option  value="tickets">Sort by number of sold tickets</option>
+						<option  value="price">Sort by total price</option>												
+					</select><br>
+					
+					<p>Sort by ascending or descending criteria</p>
+					<select id="ascOrDesc" name="ascOrDesc">
+						<option value="ASC">Ascending</option>
+						<option value="DESC">Descending</option>
+					</select><br>
+					
+					<button type="submit" id="sort">Sort </button>
+				</div>
+		</div>
+				
+		<h1>REPORTS FOR ALL MOVIES</h1>		
+		<div id="reportsDiv">
+			<label id='from'>From:</label><br>
+			<input name="FromDateAndTime" id="FromDateAndTime"  type="datetime-local"><br>
+			<label id='to'>To:</label><br>
+			<input name="ToDateAndTime" id="ToDateAndTime"  type="datetime-local"><br>
+		
+			<button id = "getReportsButton" type="submit">GET REPORTS FOR THIS PERIOD</button>
+		</div>
+		
+			
+		<table id = "table" >
+			<tr>
+				<th>Movie name</th>
+				<th>Number of projections</th>
+				<th>Number of sold tickets</th>
+				<th>Total price</th>				
+			</tr>
+		</table>		
+	</body>
+</html>
