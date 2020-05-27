@@ -7,6 +7,7 @@ $.get("./LoginServlet", function(data){
 	//function for getting all users from db
 	
 	function getAllUsers(){
+		
 		$.get("./AllUsersServlet", function(data){
 			console.log(data);
 			

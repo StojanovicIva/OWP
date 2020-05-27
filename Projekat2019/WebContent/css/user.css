@@ -134,4 +134,16 @@ h4{
 	font-size: 20px;
 	border: none;
 }
-	
+
+footer{
+	width: 50%;
+	background-color: transparent;
+	color:pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	text-align: center;	
+	font-size:18px;
+	margin-top: 8%;
+	margin-left: 25%;
+	margin-bottom: 0;
+}

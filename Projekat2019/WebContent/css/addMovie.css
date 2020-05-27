@@ -126,3 +126,14 @@ input:focus{
 	background: transparent;	
 	
 }
+
+footer{
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: transparent;
+   color:pink;
+   font-family: Oleo;
+   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+   text-align: center;	
+}

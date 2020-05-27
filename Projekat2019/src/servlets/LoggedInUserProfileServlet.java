@@ -18,8 +18,7 @@ public class LoggedInUserProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try{
-			Object loggedinUser = request.getSession().getAttribute("loggedinUser");
-			
+			Object loggedinUser = request.getSession().getAttribute("loggedinUser");			
 			Integer id =  Integer.parseInt(request.getParameter("id"));
 			
 			UserDAO dao = new UserDAO();

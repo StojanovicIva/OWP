@@ -86,7 +86,7 @@ input:focus{
 div{
 	color:pink;
 	font-size: 25px;
-	margin-left: 20%;
+ 	margin-left: 20%; 	
 	font-family: Oleo;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
@@ -146,6 +146,19 @@ table a:hover {
 	
 }
 
+footer{
+	width: 50%;
+	background-color: transparent;
+	color:pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	text-align: center;	
+	font-size:18px;
+	margin-top: 8%;
+	margin-left: 25%;
+	margin-bottom: 0;
+}
+
 
 #getTicketButton{
 	color: pink;
@@ -174,3 +187,5 @@ table a:hover {
     		font-family: Oleo;
 			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    }
 }
+
+

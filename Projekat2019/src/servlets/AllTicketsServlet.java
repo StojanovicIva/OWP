@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,10 @@ public class AllTicketsServlet extends HttpServlet {
 		try {
 			Integer userId = Integer.parseInt(request.getParameter("id"));
 			
+			if (userId == null) {
+				throw new AuthenticationException();
+			}
+			
 			TicketDAO dao = new TicketDAO();
 			
 			ArrayList<Ticket> tickets = dao.getAllForUser(userId);
@@ -31,8 +36,11 @@ public class AllTicketsServlet extends HttpServlet {
 			request.setAttribute("data", data);
 			request.getRequestDispatcher("./SuccessServlet").forward(request, response);
 			
-		}catch(Exception e) {
+		}catch(IllegalArgumentException e) {
 			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}catch(AuthenticationException e) {
+			request.getRequestDispatcher("./UnauthorizedServlet").forward(request, response);
 			e.printStackTrace();
 		}		
 	}

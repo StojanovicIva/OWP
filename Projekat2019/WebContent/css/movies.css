@@ -69,8 +69,8 @@ table{
 	text-align: center;
 	color: black;
   	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
-	font-size: 20pt;
-	margin:  auto;	
+	font-size: 20pt; 	
+	margin: 0 auto;
 }
 
 table, th, td {
@@ -183,3 +183,43 @@ p{
 	font-size: 15px;
 	margin-left: 5px;
 }
+
+footer{
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: transparent;
+   	color:pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+   text-align: center;	
+   	position: fixed;
+}
+
+
+@media screen and (max-width: 1020px) {
+	h1{
+		font-size: 40pt;
+	}
+	
+	li {
+		font-size: 10pt;		
+	}
+	
+	
+	td, th{
+		font-size: 13pt;
+	}
+	
+
+	table{
+		font-size:10pt;
+	}
+	
+	footer{
+		font-size: 8pt;
+	}
+}
+
+
+

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionManager {
 	
 	private static final String DATABASE_NAME ="DataBase.db";
-	private static final String WINDOWS_PATH = "C:\\Users\\Iva\\git\\OWP\\Projekat2019\\db\\" +  DATABASE_NAME;
+	private static final String WINDOWS_PATH = "C:\\Users\\Nemanja\\Desktop\\Vai\\OWP\\Projekat2019\\db\\" +  DATABASE_NAME;
 	private static final String PATH = WINDOWS_PATH;
 	private static Connection connection;
 

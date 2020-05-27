@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +30,7 @@ public class BuyTicketServlet extends HttpServlet {
 
 			int projectionId = Integer.parseInt(request.getParameter("projectionId"));
 			int seatId = Integer.parseInt(request.getParameter("seatId"));
-			System.out.println("SEAT ID: " + seatId);
-			int userId = Integer.parseInt(request.getParameter("user"));
+			Integer userId = Integer.parseInt(request.getParameter("user"));		
 			
 			ProjectionDAO projectionDao = new ProjectionDAO();
 			Projection projection = projectionDao.findProjectionById(projectionId);
@@ -41,7 +42,6 @@ public class BuyTicketServlet extends HttpServlet {
 			User user = userDao.findUserById(userId);
 			
 			Ticket ticket = new Ticket(projection, seat, user);
-			System.out.println("KARTA: " + ticket);
 			TicketDAO dao = new TicketDAO();
 			dao.addTicket(ticket);
 			

@@ -44,14 +44,18 @@ li a:hover {
 h2{
 	color: pink;
 	font-size: 45px;
-	margin-left:35%;
+	margin-left:35%; 
 	font-family: Oleo;
 	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
+.container{
+	margin: 0 auto;
+}
+
 label{
 	color:pink;
-	size: 15px;
+	font-size: 25px;
 	margin-left: 30%;
 	margin-top:10%;
 	font-family: Oleo;
@@ -63,8 +67,11 @@ div{
 	font-family: Oleo;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	color:pink;
-	font-size: 25px;
-}
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: 150px;
+ } 
 
 input{
 	border: 2px solid black;
@@ -99,11 +106,12 @@ input:focus{
 .description{
 	margin-left: 250px;
 	margin-top: 50px;
-	
+	margin-bottom: 50px;
 }
 
 #distributor{
 	width: 300px;
+	
 }
 #country{
 	width: 400px;
@@ -148,6 +156,18 @@ input:focus{
 	margin-left: 610px;
 }
 
+
+footer{
+	width: 100%;
+	background-color: transparent;
+	color:pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	text-align: center;	
+	font-size: 18px;
+	margin: 0 auto;
+}
+
 .blinking{
     animation:blinkingText 1.2s infinite;
 }
@@ -158,3 +178,4 @@ input:focus{
     99%{    color:transparent;  }
     100%{   color: yellow;    }
 }
+

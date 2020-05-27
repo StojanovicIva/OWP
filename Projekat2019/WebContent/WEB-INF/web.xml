@@ -342,4 +342,14 @@
     <servlet-name>ReportsServlet</servlet-name>
     <url-pattern>/ReportsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UnauthorizedServlet</display-name>
+    <servlet-name>UnauthorizedServlet</servlet-name>
+    <servlet-class>status.UnauthorizedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UnauthorizedServlet</servlet-name>
+    <url-pattern>/UnauthorizedServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -9,7 +9,8 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
-	font-family: Oleo;	
+	font-style: italic;
+	font-family: Oleo;
 }
 
 ul {
@@ -17,9 +18,9 @@ ul {
 	margin-left:0cm;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #333;
-	position: sticky;
-	top: 0;
+	background-color: transparent;
+	margin-right:0;
+	width:100%;
 }
 
 li {
@@ -36,31 +37,39 @@ li a {
 }
 
 li a:hover {
-	background-color: #ffff80;
+	background-color: orchid;
 	color: black;
 	
 }
 .active {
-	background-color: #ffff4f;
+	background-color: pink;
 	color: black;
 }
 
 h2{
-	color: yellow;
-	font-size:50px;
+	font-size: 50px;
+	font-style: italic;
 	text-align: center;
+	color: pink;
+	margin-top:25pt;
+	font-family: Oleo;
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+
 }
 
 table, #secondTable{
 	margin: 0 auto;
-	color: yellow;
+	color: black;
 	font-size: 20px;
+	font-family: Oleo;
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 table, th, td, #secondTable {
   border: 2px solid black;
   margin-bottom: 50px;
-  color: yellow
+  color: black;
+  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 .container{
@@ -71,24 +80,30 @@ table, th, td, #secondTable {
 }
 
 td{
-	background-color: black;
-	color: yellow;
+	background-color: transparent;
 	text-decoration: inherit;
-	font-size: 20px;
+	font-size: 25px;
+	color:black;
+	font-family: Oleo;
+  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+
 }
 
 table a, #secondTable a{
-	color: yellow;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+
 }
 
 table a:hover, #secondTable a:hover {
-	background-color: #ffff4f;
-	color: black;
+	background-color: palevioletred;
+	font-family: Oleo;
 }
 
  .secondStep, .container, .thirdStep{
 	border: 2px solid;
-	border-color: yellow;
+	border-color: black;
 }
 
 .secondStep{
@@ -108,11 +123,13 @@ table a:hover, #secondTable a:hover {
 .seatButton{
 	height:40px;
 	width: 50px;
-	border: 2px solid yellow;
+	border: 2px solid black;
 	border-radius: 4px;
 	font-size: 15px;
 	margin-left: 10px;
 	margin-bottom: 5px;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	
 }
 
  .secondStep, .thirdStep{
@@ -121,7 +138,8 @@ table a:hover, #secondTable a:hover {
 
 p{
 	font-size: 30px;
-	color: yellow;
+	color: black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 	margin-left:20px;
 }
 
@@ -137,7 +155,7 @@ p{
 }
 
 #next{
-	border: 2px solid yellow;
+	border: 2px solid black;
 	border-radius: 4px;
 	font-size: 15px;
 	margin-left: 10%;
@@ -145,14 +163,16 @@ p{
 }
 
 #ChoosenSeats, #FullPrice{
-	color:yellow;
+	color:black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 	font-size: 25px;
 	white-space: nowrap;
 
 }
 
 #choosenSeats, #fullPrice{
-	color: yellow;
+	color: black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 	border: none;
 	background: none;
 	font-size: 25px;
@@ -161,8 +181,9 @@ p{
 }
 
 #getTicket{
-	color: yellow;
-	background-image: url("images/back1.jpg");	
+	color: black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	background-color: transparent;	
 	border: none;
 	font-size: 20px;
 	margin-left: 30%;
@@ -174,9 +195,28 @@ p{
     animation:blinkingText 1.2s infinite;
 }
 @keyframes blinkingText{
-    0%{     color: yellow;    }
-    49%{    color: yellow; }
+    0%{     color: black;
+    		text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+        }
+    49%{    color: black;
+    		text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+     }
     60%{    color: transparent; }
     99%{    color:transparent;  }
-    100%{   color: yellow;    }
+    100%{   color: black;
+    		text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+        }
+}
+
+footer{
+	width: 50%;
+	background-color: transparent;
+	color:pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	text-align: center;	
+	font-size:18px;
+	margin-top: 25%;
+	margin-left: 25%;
+	margin-bottom: 0;
 }

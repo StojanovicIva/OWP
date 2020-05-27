@@ -28,7 +28,7 @@ function openOneProjection(){
 	$.get("./ProjectionIsInFuture", {id:id}, function(data){
 		console.log(data);
 		
-		if(data.status == "success" && data.numberOfFreeSeats > 0 && loggedinUser.role === "USER"){
+		if(data.status == "success" && data.numberOfFreeSeats > 0 && loggedinUser != null && loggedinUser.role === "USER"){
 			
 			$("#ul").append(
 					"<li id='getTicketLi'><button class = 'blinking' type='submit' id= 'getTicketButton'>CLICK HERE AND GET TICKET</button></li>");
