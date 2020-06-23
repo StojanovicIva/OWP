@@ -39,12 +39,14 @@ function getAllTickets(){
 		console.log(data);
 		
 		if(data.status == "success"){
+				
 			allTickets = data.tickets;
-
+			
 			for(ticket of allTickets){
 				$("#tableOfTickets").append("<tr>" + 
 								   "<td></td>" +
 								   "<td><a href='Ticket.html?id=" + ticket.id +"'>" + new Date(ticket.dateAndTime).toString().substring(0,21) + "</a></td></tr>");
+				
 			}
 		}else if(data.status == "fail"){
 			alert("Something went wrong! Please try again!");
@@ -62,7 +64,6 @@ $(document).ready(function(){
 	openOneUser();
 	
 	if(loggedinUser != null){
-		
 		getAllTickets();
 		
 	}
@@ -98,7 +99,7 @@ $(document).ready(function(){
 	
 		
 	}else if(loggedinUser.role == "ADMINISTRATOR"){
-			
+
 			$("#role").prop("disabled", false);
 			var role = $("#role").val();
 			

@@ -224,13 +224,14 @@ public class UserDAO {
 		
 		PreparedStatement pstmt = null;
 		try {
-			String query = "INSERT INTO users (username, password) VALUES(?, ?)";
+			String query = "INSERT INTO users (username, password, role) VALUES(?, ?, ?)";
 			
 			pstmt = connection.prepareStatement(query);
 			
 			int index = 1;
 			pstmt.setString(index++, user.getUsername());
 			pstmt.setString(index++, user.getPassword());
+			pstmt.setString(index++, user.getRole().toString());
 			
 			return pstmt.executeUpdate() == 1;
 		}catch(Exception e) {

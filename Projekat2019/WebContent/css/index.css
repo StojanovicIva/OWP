@@ -89,6 +89,7 @@ table, th, td {
 	font-family: Oleo;
 	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 	font-size: 25px;
+	background-color: black;
 }
 
 .container{

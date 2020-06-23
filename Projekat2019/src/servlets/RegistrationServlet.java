@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.management.relation.Role;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +40,8 @@ public class RegistrationServlet extends HttpServlet {
 				throw new Exception("Passwords don't match!");
 			}
 			
-			User user = new User(username, password );
+			model.Role role = model.Role.USER;
+			User user = new User(username, password, role );
 			
 			dao.addUser(user);
 			

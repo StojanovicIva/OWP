@@ -9,12 +9,14 @@ public class User {
 	private String password;
 	private Date registrationDate;
 	private Role role;
+	private boolean deleted;
 
 	public User() {
 	};
 
 	// constructor for new User
-	public User(String username, String password) {
+	@SuppressWarnings("static-access")
+	public User(String username, String password, Role role) {
 		this.id = -1;
 		this.username = username;
 		this.password = password;
@@ -36,6 +38,15 @@ public class User {
 		this.password = password;
 		this.registrationDate = registrationDate;
 		this.role = role;
+	}
+
+	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public int getId() {
