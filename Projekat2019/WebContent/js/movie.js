@@ -62,8 +62,8 @@ $(document).ready(function(){
 	}
 		
 		else if(loggedinUser != null && loggedinUser.role == "ADMINISTRATOR"){
-			$("#button").append("<button id='updateButton' type='submit'>UPDATE</button>");
-			$("#button").append("<button id='deleteButton' type= 'submit'> DELETE MOVIE</button>");
+			$("#button").prepend("<button id='updateButton' type='submit'>UPDATE</button>");
+			$("#button").prepend("<button id='deleteButton' type= 'submit'> DELETE MOVIE</button>");
 			
 			var id = window.location.search.split("=")[1];
 			

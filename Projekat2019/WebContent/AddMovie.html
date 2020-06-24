@@ -13,17 +13,19 @@
 	<body>
 		
 		<!-- NAVBAR -->
-		<ul>
-			<li><a class = "active" href="./index.html">Home</a></li>			
-			<li><a href = "Movies.html">Movies</a></li>
-		</ul>
+		<header>
+			<ul>
+				<li><a class = "active" href="./index.html">Home</a></li>			
+				<li><a href = "Movies.html">Movies</a></li>
+			</ul>
+		</header>
 		
 		<h2>Create new  movie:</h2>
 		
 		<div class= "container">
-			<div class="form">
-				<form action="./AddMovieServlet" method="post" id="addMovie">
-			
+			<form action="./AddMovieServlet" method="post" id="addMovie">
+		
+				<div class="upperSide">
 					<div class ="oneSide">
 						
 						Name: <br>
@@ -49,16 +51,20 @@
 						<textarea  id="actors" name="actors" cols="20" rows = "10"></textarea><br>
 					
 					</div>
-				
+					<div class="floatClear"></div>
+				</div>
+			
+				<div class="lowerSide">
 					<div class="description">
 						Description: <br>
 						<textarea cols='30' rows='8'  name="description" id="description"></textarea>
-					</div>
-						
-					<button type="submit" id="addMovie">Add movie!</button>
-			
-				</form>
-			</div>
+					</div>	
+				</div>
+				
+				<div class="floatClear"></div>
+				<button type="submit" id="addMovieButton">Add movie!</button>
+		
+			</form>
 		</div>
 	</body>
 	

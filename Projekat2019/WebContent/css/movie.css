@@ -4,6 +4,14 @@
        
 }
 
+header {
+  z-index: 1000;
+  position: sticky;
+  background-color: rgba(0, 0, 0, 0.65);
+  top: 0;
+}
+
+
 body {
 	background-image: url("images/back21.jpg");
 	background-repeat: no-repeat;
@@ -50,7 +58,8 @@ h2{
 }
 
 .container{
-	margin: 0 auto;
+	width: 850px;
+	margin: auto;
 }
 
 label{
@@ -63,14 +72,9 @@ label{
 }
 
 div{
-	display: inline-block;
 	font-family: Oleo;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	color:pink;
-	margin-top: 0px;
-	margin-right: auto;
-	margin-bottom: 0px;
-	margin-left: 150px;
  } 
 
 input{
@@ -86,15 +90,16 @@ input:focus{
 	border: 3px solid pink;
 }
 
-.oneSide{
-	margin-left: 250px;
-	
+.oneSide {
+	float: left;
 }
-.secondSide{
-	display: inline-block;
-	vertical-align: top;
-    margin-left:10%;
-    border-radius: 50%;
+
+.secondSide {
+	float: right;
+}
+
+.floatClear {
+	clear: both;
 }
 
 #description{
@@ -102,11 +107,15 @@ input:focus{
 	font-size: 20px;
 	border: 2px solid black;
 	background-color: pink;
+	width: 100%;
 }
-.description{
-	margin-left: 250px;
+.lowerSide{
 	margin-top: 50px;
 	margin-bottom: 50px;
+	clear: both;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #distributor{
@@ -121,7 +130,7 @@ input:focus{
 	display: inline-block;
 	border: 2px solid pink;
 	border-radius: 4px;
-	height: 40px;
+	height: 250px;
 	font-size: 20px;
 	border: 2px solid black;
 	background-color: pink;
@@ -148,12 +157,15 @@ input:focus{
 	font-family: Oleo;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	font-size: 25px;
-	margin-left: 250px;
 	border: 2px solid black;
 }
 
-#deleteButton{
-	margin-left: 610px;
+#updateButton {
+	float: left;	
+}
+
+#deleteButton {
+	float: right;
 }
 
 
@@ -177,5 +189,32 @@ footer{
     60%{    color: transparent; }
     99%{    color:transparent;  }
     100%{   color: yellow;    }
+}
+
+@media screen and (max-width: 1020px) {
+	.container {
+		width: 600px;
+	}
+	
+	.oneSide, .secondSide {
+		float: none;
+		text-align: center;
+	}
+	
+	input, #distributor, #country {
+		width: 100%;
+		text-align: center;
+	}
+	
+}
+
+@media screen and (max-width: 754px) {
+	.container {
+		width: 400px;
+	}
+}
+@media screen and (max-width: 619px) {
+}
+@media screen and (max-width: 552px) {
 }
 

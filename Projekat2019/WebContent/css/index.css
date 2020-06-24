@@ -1,416 +1,443 @@
 @font-face {
-  font-family: 'Oleo';
-  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
-       
+  font-family: "Oleo";
+  src: url("../Oleo_Script/OleoScript-Bold.ttf") format("truetype");
 }
 
-header{
-	z-index: 1000;
-	position: sticky;
-	top: 0;
-	
+header {
+  z-index: 1000;
+  position: sticky;
+  background-color: rgba(0, 0, 0, 0.65);
+  top: 0;
 }
 
 body {
-	background-image: url("images/back21.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
-	font-style: italic;
-	font-family: Oleo;	
+  background-image: url("images/back21.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  font-style: italic;
+  font-family: Oleo;
 }
 
 ul {
-	list-style-type: none;
-	margin-left:0cm;
-	padding: 0px;
-	overflow: hidden;
-	background-color: transparent;
-	margin-right:0;
-	width:100%;
+  list-style-type: none;
+  margin-left: 0cm;
+  padding: 0px;
+  overflow: hidden;
+  background-color: transparent;
+  margin-right: 0;
+  width: 100%;
 }
 
 li {
-	float: left;
+  float: left;
 }
 
 li a {
-	display: block;
-	color: pink;
-	text-align: center;
-	padding: 20px 20px;
-	text-decoration: none;
-	font-family: Oleo;
-	
+  display: block;
+  color: pink;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-family: Oleo;
 }
 
- li a:hover {
-	background-color: orchid;
-	color: black;
+li a:hover {
+  background-color: orchid;
+  color: black;
 }
 
 .active {
-	background-color: pink;
-	color: black;
+  background-color: pink;
+  color: black;
 }
 
-h1{
-	font-size: 50pt;
-	font-style: italic;
-	text-align: center;
-	color: pink;
-	margin-top:25pt;
-	font-family: Oleo;
-	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+h1 {
+  font-size: 50pt;
+  font-style: italic;
+  text-align: center;
+  color: pink;
+  margin-top: 25pt;
+  font-family: Oleo;
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
-h4{
-	font-style: italic;
-	text-align: center;
-	margin-top:25pt;
-	color:pink;
-	font-family: Oleo;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+h4 {
+  font-style: italic;
+  text-align: center;
+  margin-top: 25pt;
+  color: pink;
+  font-family: Oleo;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 table {
-	
-	margin: 0 auto;
-	color:black;
-	font-family: Oleo;
-  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
-	
+  margin: 0 auto;
+  color: black;
+  font-family: Oleo;
+  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
-table, th, td {
-  	border: 2px solid black;
-  	margin-bottom: 180px;
-	color:black;
-	font-family: Oleo;
-	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
-	font-size: 25px;
-	background-color: black;
+table,
+th,
+td {
+  border: 2px solid black;
+  margin-bottom: 180px;
+  color: black;
+  font-family: Oleo;
+  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+  font-size: 25px;
+  /*background-color: black;*/
+  background-color: rgba(0, 0, 0, 0.65);
 }
 
-.container{
-	margin-top: 3cm;
-	border:black;
+.container {
+  margin-top: 3cm;
+  border: black;
 }
 
-td{
-	background-color: transparent;
-	text-decoration: inherit;
-	font-size: 25px;
-	color:black;
-	font-family: Oleo;
-  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+td {
+  background-color: transparent;
+  text-decoration: inherit;
+  font-size: 25px;
+  color: black;
+  font-family: Oleo;
+  text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 }
 
-table a{
-	color: black;
-	font-family: Oleo;
-	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+table a {
+  color: black;
+  font-family: Oleo;
+  text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 }
 
 table a:hover {
-	background-color: palevioletred;
-	font-family: Oleo;
-	
+  background-color: palevioletred;
+  font-family: Oleo;
 }
 
-footer{
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: transparent;
-   	color:pink;
-	font-family: Oleo;
-	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-   text-align: center;	
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  color: pink;
+  font-family: Oleo;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  text-align: center;
 }
 
-.images{
-	border: medium;
-	border-color: yellow;
+.images {
+  border: medium;
+  border-color: yellow;
 }
 
-#img1, #img2, #img3 {
-	height: 400px;
-	margin-top: 50pt;
-	margin-left: 0.9%;
-	width:32%;
-	cursor:pointer;
+#img1,
+#img2,
+#img3 {
+  height: 400px;
+  margin-top: 50pt;
+  margin-left: 0.9%;
+  width: 32%;
+  cursor: pointer;
 }
 
-.bg-modal{
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.7);
-	position: absolute;
-	top:0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	display: none;
-
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
-.bgg-modal, .b-modal{
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.7);
-	position: absolute;
-	top:0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	display: none;
-
+.bgg-modal,
+.b-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
-.modal-content{
-	width: 500px;
-	height: auto;
-	background-image: url("images/back21.jpg");
-	background-color: black;
-	border-radius: 4px;
-	text-align: center;
-	padding:20px;
-	position: relative;
-	color:pink;
-	font-family: Oleo;
-	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	border: 4px solid;
-	border-color: black;
+.modal-content {
+  width: 500px;
+  height: auto;
+  background-image: url("images/back21.jpg");
+  background-color: black;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  color: pink;
+  font-family: Oleo;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  border: 4px solid;
+  border-color: black;
 }
 
-#avatar{
-	width:150px;
-	height: 100px;
-	border-radius: 50%;
+#avatar {
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
 }
 
-input{
-	width: 50%;
-	display: block;
-	margin: 15px auto;
-	
+input {
+  width: 50%;
+  display: block;
+  margin: 15px auto;
 }
 
-.close, .clos, .closeSort{
-	position: absolute;
-	top:0;
-	right: 14px;
-	font-size: 42px;
-	transform:rotate(45deg);
-	cursor: pointer;
-	color: black;
+.close,
+.clos,
+.closeSort {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+  color: black;
 }
 
-#searchProjectionsButton{
-	border: 2px solid pink;
-	border-radius: 4px;
-	height: 30px;
-	font-size: 15px;
-	margin-left: 10%;
-	margin-bottom: 1%;
+#searchProjectionsButton {
+  border: 2px solid pink;
+  border-radius: 4px;
+  height: 30px;
+  font-size: 15px;
+  margin-left: 10%;
+  margin-bottom: 1%;
 }
 
 .dropbtn {
-  	background-color: transparent;
-  	color: black;
-	font-family: Oleo;
-  	padding: 16px;
-  	font-size: 18px;
-  	border: 2px solid pink;
-  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: black;
+  font-family: Oleo;
+  padding: 16px;
+  font-size: 18px;
+  border: 2px solid pink;
+  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  	position: relative;
-  	display: inline-block;
-  	margin-left: 10%;
-  	margin-bottom: 2%;
-  	border: 2px solid black;
-  
+  position: relative;
+  display: inline-block;
+  margin-left: 10%;
+  margin-bottom: 2%;
+  border: 2px solid black;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  	display: none;
-  	position: absolute;
-  	background-color: transparent;
- 	min-width: 160px;
-   	border: 2px solid black;
- 	
-  
-/*  0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  display: none;
+  position: absolute;
+  background-color: transparent;
+  min-width: 160px;
+  border: 2px solid black;
+
+  /*  0px 8px 16px 0px rgba(0,0,0,0.2);*/
   z-index: 1;
 }
+
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-   	border: 2px solid black;
-  
+  border: 2px solid black;
+  background-color: rgba(255, 100, 200, 0.65);
 }
 
-#rangeDiv{
-	display:none;
+#rangeDiv {
+  display: none;
 }
-#typeDiv{
-	display:none;
+#typeDiv {
+  display: none;
 }
-#hallDiv{
-	display:none;
+#hallDiv {
+  display: none;
 }
-#timeDiv{
-	display:none;
+#timeDiv {
+  display: none;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: violet;}
+.dropdown-content a:hover {
+  background-color: violet;
+}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: inline;}
+.dropdown:hover .dropdown-content {
+  display: inline;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: violet; 
-							color: black;
-							border-color: pink;}
-
-
-
+.dropdown:hover .dropbtn {
+  background-color: violet;
+  color: black;
+  border-color: pink;
+}
 
 @media screen and (max-width: 1020px) {
-	h1{
-		font-size: 30pt;
-	}
-	h4{
-		font-size: 15pt;
-	}
-	
-	li {
-		font-size: 9pt;		
-	}
-	
-	
-	#img2{
-		display: none;
-	}
+  h1 {
+    font-size: 30pt;
+  }
+  h4 {
+    font-size: 15pt;
+  }
 
-	#img1, #img3{
-		height: 300px;
-		margin-left:100pt;
-	}
-	
-	td{
-		font-size: 10pt;
-	}
+  li {
+    font-size: 9pt;
+  }
 
-	table{
-		font-size:10pt;
-	}
-	
-	footer{
-		font-size: 8pt;
-	}
+  #img2 {
+    display: none;
+  }
+  
+  .images {
+  	width: 655px;
+  	margin: auto;
+  }
+
+  #img1,
+  #img3 {
+    height: 300px;
+    width: 300px;
+    margin-left: 0;
+  }
+  
+  #img1 {
+  	margin-right: 50px;
+  }
+
+  td {
+    font-size: 10pt;
+  }
+
+  table {
+    font-size: 10pt;
+  }
+
+  footer {
+    font-size: 8pt;
+  }
 }
 
 @media screen and (max-width: 754px) {
-	h1{
-		font-size: 28pt;
-	}
-	h4{
-		font-size: 15pt;
-	}
-	
-	li {
-		font-size: 8.5pt;		
-	}
-	td{
-		font-size: 10pt;
-	}
+  h1 {
+    font-size: 28pt;
+  }
+  h4 {
+    font-size: 15pt;
+  }
 
-	table{
-		font-size:10pt;
-	}
-	
-	#img2{
-		display: none;
-	}
+  li {
+    font-size: 8.5pt;
+  }
+  td {
+    font-size: 10pt;
+  }
 
-	#img1, #img3{
-		height: 300px;
-		margin-left:50pt;
-	}	
+  table {
+    font-size: 10pt;
+  }
 
+  #img2 {
+    display: none;
+  }
+  
+  .images {
+  	width: 400px;
+  	margin: auto;
+  }
+
+  #img1,
+  #img3 {
+    height: 400px;
+    width: 400px;
+  }
 }
 
 @media screen and (max-width: 619px) {
-	h1{
-		font-size: 28pt;
-	}
-	h4{
-		font-size: 15pt;
-	}
-	
-	li {
-		font-size: 8pt;		
-	}
-	
-	
-	#img2{
-		display: none;
-	}
+  h1 {
+    font-size: 28pt;
+  }
+  h4 {
+    font-size: 15pt;
+  }
 
-	#img1, #img3{
-		height: 300px;
-		margin-left:50pt;
-	}	
-	td{
-		font-size: 20pt;
-	}
+  li {
+    font-size: 8pt;
+  }
 
-	table{
-		font-size:20pt;
-	}
+  #img2 {
+    display: none;
+  }
+  
+  .images {
+  	width: 350px;
+  	margin: auto;
+  }
 
+  #img1,
+  #img3 {
+    height: 300px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  td {
+    font-size: 20pt;
+  }
+
+  table {
+    font-size: 20pt;
+  }
 }
 
 @media screen and (max-width: 552px) {
-	h1{
-		font-size: 30pt;
-	}
-	h4{
-		display:none;
-	}
-	
-	li {
-		font-size: 8pt;		
-	}
-	
-	
-	#img2{
-		display: none;
-	}
+  h1 {
+    font-size: 30pt;
+  }
+  h4 {
+    display: none;
+  }
 
-	#img1, #img3{
-		width: 80%;
-	}	
-	
-	td{
-		font-size: 10pt;
-	}
+  li {
+    font-size: 8pt;
+  }
 
-	table{
-		font-size:10pt;
-	}
-	.dropdown, .dropbtn{
-		font-size: 10pt;
-	}
+  #img2 {
+    display: none;
+  }
+  
+  .images {
+  	width: 300px;
+  }
+  
+
+  #img1,
+  #img3 {
+    width: 100%;
+  }
+
+  td {
+    font-size: 10pt;
+  }
+
+  table {
+    font-size: 10pt;
+  }
+  .dropdown,
+  .dropbtn {
+    font-size: 10pt;
+  }
 }
-
-

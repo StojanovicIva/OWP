@@ -13,15 +13,17 @@
 	</head>
 	<body>
 		<!-- NAVBAR -->
-		<ul id="ul">
-			<li><a class = "active" href="./index.html">Home</a></li>			
-			<li><a href = "Movies.html">Movies</a></li>
-		</ul>
+		<header>
+			<ul id="ul">
+				<li><a class = "active" href="./index.html">Home</a></li>			
+				<li><a href = "Movies.html">Movies</a></li>
+			</ul>
+		</header>
 		
 		<h2>Selected movie:</h2>
 		
 		<div class= "container">
-			<div class="form">
+			<div class="upperSide">
 				<div class ="oneSide">
 					Name: <br>
 					<input name="name" id="name" disabled="disabled"><br>
@@ -51,17 +53,20 @@
 					<textarea  id="actors" disabled ="disabled"></textarea><br>
 				
 				</div>
-				
-				<div class="description">
-					Description: <br>
-					<textarea  rows="6" cols="80" name="description" id="description" disabled ="disabled"></textarea>
-				</div>
-				
+				<div class="floatClear"></div>
 			</div>
+			
+			<div class="lowerSide">
+				Description: <br>
+				<textarea  rows="6" cols="80" name="description" id="description" disabled ="disabled"></textarea>
+			</div>
+			
+			<div id="button">
+				<div class="floatClear"></div>
+			</div>
+				
 		</div>
-		<div id="button">
 		
-		</div>
 		
 	</body>
 	
