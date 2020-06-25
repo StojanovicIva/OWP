@@ -57,12 +57,31 @@ h1{
 	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
+
+header {
+	z-index: 1000;
+	position: sticky;
+	background-color: rgba(0, 0, 0, 0.65);
+	top: 0;
+}
+
+table {
+	text-align: center;
+	color: black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	font-size: 20pt;
+	margin: 0 auto;
+}
+
 table, th, td {
-  border: 2px solid black;
-  font-family: Oleo;
-  color: black;
-  text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
-  font-size: 25px;
+	border: 2px solid black;
+	margin-bottom: 180px;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+	font-size: 25px;
+	/*background-color: black;*/
+	background-color: rgba(0, 0, 0, 0.65);
 }
 
 .container{
@@ -79,11 +98,6 @@ td{
   	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
-table{
-	margin: 0 auto;
-	
-}
-
 table a{
 	color: black;
   	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
@@ -94,13 +108,17 @@ table a:hover {
 	font-family: Oleo;
 }
 
+.upperSide {
+	width: 650px;
+	margin: 70px auto;
+}
+
 #findUserInput{
 	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;
-	margin-bottom: 30px;
-	margin-left:150px;
+	float: left;
 }
 
 #roleSelect{
@@ -108,8 +126,7 @@ table a:hover {
 	border-radius: 4px;
 	height: 30px;
 	font-size: 15px;
-	margin-bottom: 30px;
-	margin-left:150px;
+	float: right;
 }
 
 input:focus{
@@ -174,3 +191,11 @@ footer{
 	margin-left: 25%;
 	margin-bottom: 0;
 }
+
+@media screen and (max-width: 754px) {
+	.upperSide {
+		width: 450px;
+		margin: 30px auto;
+	}
+}
+

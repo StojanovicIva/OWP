@@ -12,6 +12,13 @@ body {
 	font-family: Oleo;
 }
 
+header {
+	z-index: 1000;
+	position: sticky;
+	background-color: rgba(0, 0, 0, 0.65);
+	top: 0;
+}
+
 ul {
 	list-style-type: none;
 	margin-left:0cm;
@@ -76,15 +83,35 @@ table{
 	margin: 0 auto;
 	font-family: Oleo;
   	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+  	width: 700px;
 }
 
-table, th, td {
+table {
+	text-align: center;
+	color: black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	font-size: 20pt;
+	margin: 0 auto;
+}
+
+/*table, th, td {
    	border: 2px solid black;
    	margin: 0 auto;
 	color:black;
 	font-family: Oleo;
   	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 	font-size: 25px;
+}*/
+
+table, th, td {
+	border: 2px solid black;
+	margin-bottom: 180px;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+	font-size: 25px;
+	/*background-color: black;*/
+	background-color: rgba(0, 0, 0, 0.65);
 }
 
 td{
@@ -93,7 +120,7 @@ td{
 	text-decoration: inherit;
 	font-size: 20px;
 	font-family: Oleo;
-  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;11
+  	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
 }
 
 table a{
@@ -211,4 +238,10 @@ footer{
 	margin-top: 25%;
 	margin-left: 25%;
 	margin-bottom: 0;
+}
+
+@media screen and (max-width: 754px) {
+	table {
+		width: 400px;
+	}
 }

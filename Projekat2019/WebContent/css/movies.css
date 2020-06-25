@@ -1,14 +1,13 @@
 @font-face {
-  font-family: 'Oleo';
-  src:  url('../Oleo_Script/OleoScript-Bold.ttf')  format('truetype');
-       
+	font-family: 'Oleo';
+	src: url('../Oleo_Script/OleoScript-Bold.ttf') format('truetype');
 }
 
 header {
-  z-index: 1000;
-  position: sticky;
-  background-color: rgba(0, 0, 0, 0.65);
-  top: 0;
+	z-index: 1000;
+	position: sticky;
+	background-color: rgba(0, 0, 0, 0.65);
+	top: 0;
 }
 
 body {
@@ -21,7 +20,7 @@ body {
 
 ul {
 	list-style-type: none;
-	margin-left:0cm;
+	margin-left: 0cm;
 	padding: 0px;
 	overflow: hidden;
 	background-color: transparent;
@@ -33,7 +32,6 @@ li {
 	float: left;
 }
 
-
 li a {
 	display: block;
 	color: pink;
@@ -44,9 +42,8 @@ li a {
 }
 
 li a:hover {
-	background-color: violet;	
+	background-color: violet;
 	color: black;
-	
 }
 
 .active {
@@ -54,7 +51,7 @@ li a:hover {
 	color: black;
 }
 
-h1{
+h1 {
 	font-size: 50pt;
 	font-style: italic;
 	color: pink;
@@ -63,40 +60,47 @@ h1{
 	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
-h2{
+h2 {
 	text-align: center;
-	color: pink;	
+	color: pink;
 	font-style: italic;
 	font-family: inherit;
 	font-family: Oleo;
 	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
-table{
+table {
 	text-align: center;
 	color: black;
-  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
-	font-size: 20pt; 	
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	font-size: 20pt;
 	margin: 0 auto;
 }
 
 table, th, td {
-  border: 2px solid black;
+	border: 2px solid black;
+	margin-bottom: 180px;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+	font-size: 25px;
+	/*background-color: black;*/
+	background-color: rgba(0, 0, 0, 0.65);
 }
 
-td{
+td {
 	background-color: transparent;
 	color: black;
 	text-decoration: inherit;
 	font-size: 20px;
 	font-family: Oleo;
-  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 }
 
-table a{
+table a {
 	color: black;
 	font-family: Oleo;
-  	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 	text-decoration: none;
 }
 
@@ -105,76 +109,81 @@ table a:hover {
 	color: black;
 }
 
-.bg-modal{
+.bg-modal {
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0, 0, 0, 0.7);
 	position: absolute;
-	top:0;
+	top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	display: none;
-
 }
-.bgg-modal{
+
+.bgg-modal {
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0, 0, 0, 0.7);
 	position: absolute;
-	top:0;
+	top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	display: none;
-
 }
 
-.modal-content{
+.modal-content {
 	width: 500px;
 	height: auto;
 	background-image: url("images/back21.jpg");
 	background-color: black;
 	border-radius: 4px;
 	text-align: center;
-	padding:20px;
+	padding: 20px;
 	position: relative;
 	color: pink;
 	border: 2px solid;
 	border-color: black;
 }
 
-input{
+input {
 	width: 50%;
 	display: block;
 	margin: 15px auto;
 }
 
-.close{
+.close {
 	position: absolute;
-	top:0;
+	top: 0;
 	right: 14px;
 	font-size: 42px;
-	transform:rotate(45deg);
+	transform: rotate(45deg);
 	cursor: pointer;
 	color: pink;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
 }
 
-#rangeDiv{
-	display:none;
+#rangeDiv {
+	display: none;
 }
 
-input{
+input {
 	width: 50%;
 	display: block;
 	margin: 15px auto;
-	
-}
-p{
-	font-size: 20px;
 }
 
-#search{
+p {
+	font-size: 20px;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+}
+
+#search {
 	border: 2px solid pink;
 	border-radius: 4px;
 	height: 30px;
@@ -182,7 +191,7 @@ p{
 	margin-left: 5px;
 }
 
-#sort{
+#sort {
 	margin-top: 20%;
 	border: 2px solid pink;
 	border-radius: 4px;
@@ -191,42 +200,32 @@ p{
 	margin-left: 5px;
 }
 
-footer{
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: transparent;
-   	color:pink;
+footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: transparent;
+	color: pink;
 	font-family: Oleo;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-   text-align: center;	
-   	position: fixed;
+	text-align: center;
+	position: fixed;
 }
 
-
 @media screen and (max-width: 1020px) {
-	h1{
+	h1 {
 		font-size: 40pt;
 	}
-	
 	li {
-		font-size: 10pt;		
+		font-size: 10pt;
 	}
-	
-	
-	td, th{
+	td, th {
 		font-size: 13pt;
 	}
-	
-
-	table{
-		font-size:10pt;
+	table {
+		font-size: 10pt;
 	}
-	
-	footer{
+	footer {
 		font-size: 8pt;
 	}
 }
-
-
-

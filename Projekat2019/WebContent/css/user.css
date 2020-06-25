@@ -73,19 +73,23 @@ input:focus{
 	border: 3px solid violet;
 }
 
+main {
+	width: 550px;
+	margin: 0 auto;
+}
+
+#tableOfTickets {
+	width: 100%;
+}
+
 .avatar {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  display: inline-block;
-  vertical-align: top;
-  margin-left:10%;
+	margin: 0 auto;
+	display: block;
   border: 2px solid black;
-}
-
-.form{
-	display: inline-block;
-	margin-left: 25%;
+  float: right;
 }
 
 table{
@@ -99,6 +103,25 @@ table{
 
 table, th, td {
   border: 2px solid black;
+}
+
+table {
+	text-align: center;
+	color: black;
+	text-shadow: -2px 0 pink, 0 2px pink, 1px 0 pink, 0 -2px pink;
+	font-size: 20pt;
+	margin: 0 auto;
+}
+
+table, th, td {
+	border: 2px solid black;
+	margin-bottom: 180px;
+	color: black;
+	font-family: Oleo;
+	text-shadow: -1px 0 pink, 0 1px pink, 1px 0 pink, 0 -1px pink;
+	font-size: 25px;
+	/*background-color: black;*/
+	background-color: rgba(0, 0, 0, 0.65);
 }
 
 td{
@@ -146,4 +169,19 @@ footer{
 	margin-top: 8%;
 	margin-left: 25%;
 	margin-bottom: 0;
+}
+
+@media screen and (max-width: 619px) {
+	main {
+		width: 300px;
+	}
+	
+	.avatar {
+		float: none;
+	}
+	
+	.form {
+		width: 251px;
+		margin: 0 auto;
+	}
 }
