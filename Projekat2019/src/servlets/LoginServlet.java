@@ -18,10 +18,22 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Object loggedinUser = request.getSession().getAttribute("loggedinUser");
-		
 		Map<String, Object> data = new LinkedHashMap<String, Object>();
 		
-		data.put("loggedinUser", loggedinUser);
+		if(loggedinUser != null) {
+			User u = (User) loggedinUser;
+			UserDAO userDao = new UserDAO();					
+			User user = userDao.findUserById(u.getId());
+			
+			request.getSession().setAttribute("loggedInUser", user);
+			data.put("loggedinUser", user);
+
+		}
+		
+		else {
+			data.put("loggedinUser", null);
+		}
+		
 		
 		request.setAttribute("data", data);
 		request.getRequestDispatcher("./SuccessServlet").forward(request, response);

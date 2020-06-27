@@ -181,3 +181,12 @@ footer{
 	margin-left: 25%;
 	margin-bottom: 0;
 }
+
+#deleteButton{
+	float: right;
+	color: pink;
+	font-family: Oleo;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	font-size: 25px;
+	border: 2px solid black;
+}

@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.MovieDAO;
 import dao.TicketDAO;
+import model.Movie;
 import model.Ticket;
 
 public class AllTicketsServlet extends HttpServlet {
@@ -46,8 +48,20 @@ public class AllTicketsServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		try{
+			TicketDAO dao = new TicketDAO();
+			
+			ArrayList<Ticket> tickets = dao.getAllTickets();
+			
+			Map<String, Object> data = new LinkedHashMap<String, Object>();
+			data.put("tickets", tickets);
+			
+			request.setAttribute("data", data);
+			request.getRequestDispatcher("./SuccessServlet").forward(request, response);	
+		}catch(Exception e){
+			request.getRequestDispatcher("./FailServlet").forward(request, response);
+			e.printStackTrace();
+		}
 	}
 
 }

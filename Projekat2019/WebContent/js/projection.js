@@ -46,7 +46,7 @@ function openOneProjection(){
 			document.getElementById('h4').style.display = "block";
 
 
-			$("#button").append("<button id='deleteButton' type= 'submit'> DELETE MOVIE</button>");
+			$("#button").append("<button id='deleteButton' type= 'submit'> DELETE </button>");
 			
 			
 			$("#deleteButton").on("click", function(data){
@@ -71,7 +71,7 @@ function openOneProjection(){
 				if(data.status == "success"){
 					for(ticket of data.tickets){
 						$("#tableOfTickets").append("<tr>" + 
-										   "<td>" + " * -> *  " +"</td>" +
+										   "<td>" + " *->  " +"</td>" +
 										   "<td><a href='User.html?id='" + ticket.userId + "'>" + ticket.user.username + "</a></td>" +  
 										   "<td><a href='Ticket.html?id=" + ticket.id +"'>" + new Date(ticket.dateAndTime).toString().substring(0,21) + "</a></td></tr>");
 					}

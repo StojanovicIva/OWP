@@ -18,6 +18,7 @@ $.get("./LoginServlet", function(data){
 				}		
 				movieName.change(function(){
 					movieValue = $(this).val();
+					
 				});
 			});
 			var projectType = $("#projectionType");

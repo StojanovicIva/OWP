@@ -13,10 +13,11 @@ function openOneUser(){
 		
 		user = data.user;
 		
-		if(loggedinUser.id != user.id){
+		if(loggedinUser.id != user.id){			
 			$("#username").val(data.user.username);
 			$("#registrationDate").val(new Date(user.registrationDate).toString().substring(4,16));
 			$("#role").val(data.user.role.toString());			
+			$("#updateButton").prop("disabled", false);
 		}
 		else if(loggedinUser.id === user.id){
 			$("#username").val(data.user.username);
@@ -25,7 +26,10 @@ function openOneUser(){
 			$("#registrationDate").val(new Date(user.registrationDate).toString().substring(4,16));
 			$("#role").val(data.user.role.toString());
 		}
-		else if(loggedinUser != null && loggedinUser.role == "ADMINISTRATOR"){
+		if(loggedinUser.role == "ADMINISTRATOR"){
+			
+			$("#password").prop("disabled", true);
+			$("#repeatedPassword").prop("disabled", true);
 			$("#role").prop("disabled", false);
 		}
 	
@@ -61,17 +65,18 @@ function getAllTickets(){
 
 
 $(document).ready(function(){
-	openOneUser();
-	
+	id = window.location.search.split("=")[1];
+
 	if(loggedinUser != null){
+		openOneUser();		
 		getAllTickets();
 		
 	}
 	
-	else if(loggedinUser.id == id){
-
+	if(loggedinUser.id == id){
+		
+		
 		$("#updateButton").on("click", function(event){
-			
 			var pass = $("#password").val();
 			var repPass = $("#repeatedPassword").val();
 			
@@ -99,6 +104,9 @@ $(document).ready(function(){
 	
 		
 	}else if(loggedinUser.role == "ADMINISTRATOR"){
+			$("#delete").prepend("<button id='deleteButton' type = 'submit'> DELETE USER </button>");
+			
+			var id = window.location.search.split("=")[1];
 
 			$("#role").prop("disabled", false);
 			var role = $("#role").val();
@@ -123,6 +131,25 @@ $(document).ready(function(){
 					}
 				});
 			});	
+			
+			$("#deleteButton").on("click", function(data){
+				
+				var answer = window.confirm("Are You sure You want to delete user?");
+				
+				if(answer){
+					
+					$.get("./DeleteUserServlet", {id:id}, function(data){
+						
+						if(data.status == "success"){
+							window.location.replace("./users.html");
+						}else if(data.status == "fail"){
+							alert("Something went wrong! Please try again!");
+							window.location.reload();
+						}
+					});
+				}
+				
+			});
 		}		
 	});
 });

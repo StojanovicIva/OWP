@@ -121,7 +121,7 @@ public class UserDAO {
 		ResultSet rset = null;
 		
 		try {
-			String query = "SELECT id, registrationDate, role FROM users WHERE deleted = FALSE AND username = ? AND password = ?";
+			String query = "SELECT id, registrationDate, role FROM users WHERE deleted = FALSE AND username = ? AND password = ? AND deleted = false";
 
 			pstmt = connection.prepareStatement(query);
 			
@@ -174,7 +174,7 @@ public class UserDAO {
 		
 		try {
 			
-			String query = "SELECT id, password, registrationDate, role FROM users WHERE username = ?";
+			String query = "SELECT id, password, registrationDate, role FROM users WHERE username = ? AND deleted = false";
 			
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, username);
@@ -391,6 +391,34 @@ public class UserDAO {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
+	//DELETE LOGIC
+	
+	public boolean deleteUserLogic (int id ) {			
+			
+		Connection connection = ConnectionManager.getConnection();
+
+		PreparedStatement pstmt = null;
+		try {
+			String query = "UPDATE users SET deleted = 1 WHERE id = ?";
+			
+			pstmt = connection.prepareStatement(query);
+			int index = 1;
+
+			pstmt.setInt(index++, id);
+			
+			return pstmt.executeUpdate() == 1;
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+
+		}finally {
+			try {pstmt.close();} catch (Exception ex1) {ex1.printStackTrace();}
+			try {connection.close();} catch (Exception ex1) {ex1.printStackTrace();}		
+		}
+		return false;
+	}
+
+//----------------------------------------------------------------------------------------------------------------------------
 
 	//FUNCTION FOR UPDATE PASSWORD
 	
@@ -400,7 +428,7 @@ public class UserDAO {
 		
 		PreparedStatement pstmt = null;
 		try {
-			String query = "UPDATE users SET password = ? WHERE id = ?";
+			String query = "UPDATE users SET password = ? WHERE id = ? AND deleted = false";
 			
 			pstmt = connection.prepareStatement(query);
 			
@@ -428,7 +456,7 @@ public class UserDAO {
 		Connection connection = ConnectionManager.getConnection();
 		PreparedStatement pstmt = null;
 		try {
-			String query = "UPDATE users SET role = ? WHERE id = ?";
+			String query = "UPDATE users SET role = ? WHERE id = ? AND deleted = false";
 			
 			pstmt = connection.prepareStatement(query);
 			

@@ -352,4 +352,24 @@
     <servlet-name>UnauthorizedServlet</servlet-name>
     <url-pattern>/UnauthorizedServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUserServlet</display-name>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>servlets.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/DeleteUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteTicketServlet</display-name>
+    <servlet-name>DeleteTicketServlet</servlet-name>
+    <servlet-class>servlets.DeleteTicketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteTicketServlet</servlet-name>
+    <url-pattern>/DeleteTicketServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

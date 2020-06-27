@@ -140,7 +140,10 @@ $.get("./LoginServlet", function(data){
 				window.location.replace("./User.html?id=" + loggedinUser.id);
 			});
 		}
-		getAllUsers();
+		
+		if(loggedinUser != null && loggedinUser.role == "ADMINISTRATOR"){
+			getAllUsers();	
+				
 		
 		//open modal for sorting
 		document.getElementById("sortUsers").addEventListener("click", function(){
@@ -160,5 +163,6 @@ $.get("./LoginServlet", function(data){
 		$("#roleSelect").change(searchUsersRole);		
 		$("#search").click(searchUsers);
 		$("#sort").on("click", sortUsers);
+		}
 	});
 });
